@@ -1,6 +1,6 @@
-
 /*
-  Artevelde hogeschool CSS Reset v0.1
+  Artevelde hogeschool CSS Reset v0.2
+
   Adapted version from Josh's Custom CSS Reset https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
@@ -33,6 +33,7 @@ html, body {
   5. Improve text rendering
 */
 body {
+  min-height: 100%;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }

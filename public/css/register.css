@@ -1,0 +1,40 @@
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }  
+
+.register {
+    font-family: "Bebas Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+
+    & h1, p {
+        margin: 2rem auto;
+        color: white;
+    }
+
+    & a {
+        margin: 2rem auto;
+        color: gray;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+
+    & button{
+        background-color: hsl(33.9,100%,56.27%);
+        margin: 1rem auto;
+        padding: 0.5rem 4rem;
+        color: white;
+
+        &:hover {
+            background-color: hsl(33.9,80%,56.27%);
+            color: white;
+        }
+    }
+    
+    .register--svg {
+        width: 50%;
+        margin: 4rem auto;
+    }
+}
