@@ -1,0 +1,12 @@
+.register {
+    display: flex;
+    flex-direction: column;
+
+    .register--title {
+        margin: 0 auto;
+    }
+
+    .register--text {
+        font-style: italic;
+    }
+}
