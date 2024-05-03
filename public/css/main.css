@@ -1,5 +1,6 @@
 body {
-
+  background-color: hsl(200, 80%, 20%);
+  
   form {
     display: flex;
     flex-direction: column;
