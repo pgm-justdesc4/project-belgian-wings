@@ -10,6 +10,8 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+// ----------------- LOADING -----------------
+
 .loading{
     position: absolute;
     top: 50%;
@@ -68,4 +70,22 @@ body{
       opacity: 1;
     }
   }
-  
+  // ----------------- END-LOADING -----------------
+
+  // ----------------- LOGO ------------------------
+
+  .logo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .logo path:nth-child(1){
+    fill: var(--secondary-color);
+    stroke-dasharray: 100px;
+  }
+  .logo path:nth-child(2){
+  }
+  .logo path:nth-child(3){
+  }
