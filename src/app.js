@@ -4,6 +4,7 @@ import path from "path";
 dotenv.config();
 import bodyParser from "body-parser";
 import { getUser } from "./controllers/controllers";
+import authregistervalidation from "./middleware/validation/authregistervalidation";
 
 const app = express();
 app.use(express.json());
@@ -15,7 +16,8 @@ app.use(cookieParser());
 
 app.get("/user", getUser);
 app.get("/userStats", getUserStats);
-app.post("/api/user", createUser);
+app.post("/api/addUser", authregistervalidation, createUser);
+app.post("/api/login", authloginvalidation, loginUser);
 
 app.listen(port, () => {
   console.log("example app listening on port", `http://localhost:${port}`);
