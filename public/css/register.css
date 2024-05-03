@@ -2,17 +2,12 @@
     display: flex;
     flex-direction: column;
 
-    .register--title {
+    & h1, p {
         margin: 2rem auto;
         color: white;
     }
 
-    .register--text {
-        margin: 2rem auto;
-        color: gray;
-    }
-
-    .register--link {
+    & a {
         margin: 2rem auto;
         color: gray;
         text-decoration: underline;
@@ -22,5 +17,12 @@
     .register--svg {
         width: 50%;
         margin: 4rem auto;
+    }
+
+    & button{
+        background-color: orange;
+        margin: 1rem auto;
+        padding: 0.5rem 4rem;
+        color: white;
     }
 }
