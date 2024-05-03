@@ -15,10 +15,15 @@
     }
 
     & button{
-        background-color: orange;
+        background-color: hsl(33.9,100%,56.27%);
         margin: 1rem auto;
         padding: 0.5rem 4rem;
         color: white;
+
+        &:hover {
+            background-color: hsl(33.9,80%,56.27%);
+            color: white;
+        }
     }
     
     .register--svg {
