@@ -19,7 +19,11 @@
     <section class="register">
       <img class="register--svg" src="../imgs/Logo_Airforce_White.svg" />
       <h1>Aanmelden</h1>
-      <form>
+      <form
+        action="/api/login"
+        method="POST"
+        enctype="application/x-www-form-urlencoded"
+      >
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
 

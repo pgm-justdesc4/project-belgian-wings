@@ -2,7 +2,6 @@ import user from "../../models/user.js";
 import userStats from "../../models/user_stats.js";
 import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator";
-import { create } from "express-handlebars";
 
 export async function createUser(req, res) {
   const errors = validationResult(req);
@@ -12,7 +11,6 @@ export async function createUser(req, res) {
       ...errors,
     });
   }
-  console.log(req.body);
 
   if (!user.query().findOne({ email: req.body.email })) {
     return res.json({
@@ -22,12 +20,11 @@ export async function createUser(req, res) {
   }
 
   const newUser = await createUserStats();
-  console.log(newUser.id);
+  const username = `user${Math.random() * 1000000000000}`;
 
-  const test = await user
+  await user
     .query()
-    .insert({ ...req.body, user_stats_id: newUser.id });
-  console.log(test);
+    .insert({ ...req.body, user_stats_id: newUser.id, username: username });
   res.redirect("/login");
 }
 
