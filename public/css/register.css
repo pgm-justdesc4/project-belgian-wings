@@ -14,15 +14,15 @@
         text-decoration-color: white;
     }
 
-    .register--svg {
-        width: 50%;
-        margin: 4rem auto;
-    }
-
     & button{
         background-color: orange;
         margin: 1rem auto;
         padding: 0.5rem 4rem;
         color: white;
+    }
+    
+    .register--svg {
+        width: 50%;
+        margin: 4rem auto;
     }
 }
