@@ -89,7 +89,6 @@ function movePlane() {
     let x = e.clientX - startX;
     let gameAreaRect = gameArea.getBoundingClientRect();
 
-    // Constrain the plane within the game area
     if (x < gameAreaRect.left) {
       x = gameAreaRect.left;
     } else if (x > gameAreaRect.right - plane.offsetWidth) {
@@ -156,7 +155,7 @@ function startGame() {
   // Choose a plane to play with
   choosePlane("plane");
 
-  // Let the objects fall
+  // Let the objects fall within the gaming time
   gameInterval = setInterval(function () {
     objectsComeToPlayer();
     checkCollision();

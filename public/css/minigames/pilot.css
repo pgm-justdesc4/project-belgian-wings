@@ -1,10 +1,9 @@
 /*
 ================================================== 
-Plane
+STANDARD
 ==================================================
 */
 .game {
-  /* Set the size of the game area */
   width: 50rem;
   height: 100vh;
   position: relative;
@@ -13,8 +12,12 @@ Plane
   border: 1px solid black;
 }
 
+/*
+================================================== 
+Plane
+==================================================
+*/
 .plane {
-  /* Position the plane at the bottom center of the game area */
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -22,10 +25,14 @@ Plane
 }
 
 .plane img {
-  /* Set the size of the plane */
   width: 7rem;
 }
 
+/*
+================================================== 
+Falling objects
+==================================================
+*/
 .object {
   width: 4rem;
   height: 4rem;
