@@ -1,9 +1,15 @@
+body {
+    background-image: url("../imgs/Earth_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 98.4vh;
+}
+
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50vh;
 }
 
 label {
@@ -15,4 +21,3 @@ input {
     margin-bottom: 1rem;
     width: 80%;
 }
-
