@@ -39,10 +39,18 @@
             color: white;
         }
     }
-    
-    .user--svg {
+
+    & .user--svg {
         width: 50%;
         margin: 4rem auto;
+    }
+
+    & .user--info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        width: 80%;
     }
 }
 
