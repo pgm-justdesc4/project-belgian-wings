@@ -2,16 +2,23 @@
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }  
+  } 
+  
+  @font-face {
+    font-family: "AzoSans-Black";
+    src: url("../fonts/AzoSans-Thin.ttf") format("truetype");
+  
+  }
 
 .user {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "AzoSans-Black";
     display: flex;
     flex-direction: column;
 
     & h1, p {
         margin: 2rem auto;
         color: white;
+        font-weight: bold;
     }
 
     & a {
