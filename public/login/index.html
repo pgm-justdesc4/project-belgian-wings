@@ -5,28 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/register.css">
-    
+    <link rel="stylesheet" href="../css/user.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Aanmelden</title>
 </head>
 <body>
-    <section class="register">
-    <img class="register--svg" src="../imgs/Logo_Airforce_White.svg">
+    <section class="user">
+    <img class="user--svg" src="../imgs/Logo_Airforce_White.svg">
         <h1>Aanmelden</h1>
         <form>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="password">Wachtwoord:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="user--info">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="user--info">
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
             <button type="submit">Aanmelden</button>
         </form>
-        <p>Nieuw bij de luchtmacht? <a class="register--link" href="/public/register">Registreer!</a></p>
+        <p>Nieuw bij de luchtmacht? <a class="user--link" href="/public/register">Registreer!</a></p>
     </section>
 </body>
 </html>

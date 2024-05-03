@@ -1,25 +1,26 @@
 body {
-    background-image: url("../imgs/Earth_background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url("../imgs/Earth_background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: white;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    
+    & label {
+        margin-right: auto;
+        color:white;
+        opacity: 1;   
+      }
 
-        & label {
-            margin-bottom: 0.5rem;
-            align-items: left;
-        }
-
-        & input {
-            justify-content: center;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            width: 80%;
-            background-color: rgba(128, 128, 128, 0.7);
-        }
+    & input {
+      justify-content: center;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      background-color: rgba(128, 128, 128, 0.7);
     }
+  }
 }
