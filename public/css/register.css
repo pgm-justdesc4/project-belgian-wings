@@ -9,10 +9,18 @@
 
     .register--text {
         margin: 2rem auto;
-        color: white;
+        color: gray;
+    }
+
+    .register--link {
+        margin: 2rem auto;
+        color: gray;
+        text-decoration: underline;
+        text-decoration-color: white;
     }
 
     .register--svg {
-        fill: red;
+        width: 50%;
+        margin: 4rem auto;
     }
 }
