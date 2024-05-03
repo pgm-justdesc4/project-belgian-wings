@@ -11,6 +11,9 @@ const locations = [
   },
 ];
 
+let score = 0; // Initialize score
+let gameInterval; // Initialize gameInterval
+
 function setGameLocationBackground(gameLocation) {
   locations.forEach((location) => {
     if (location.name === gameLocation) {
@@ -37,18 +40,15 @@ function choosePlane(planeId) {
  */
 function objectsComeToPlayer() {
   const objects = document.getElementById("objects");
-  // Create a new object
   const object = document.createElement("div");
   object.classList.add("object");
-  // Set the object's initial position and speed
   object.style.left = Math.random() * window.innerWidth + "px";
-  object.style.animationDuration = "2s";
-  // Add the object to the game
+  object.style.animationDuration = "1s";
   objects.appendChild(object);
-  // Remove the object when it reaches the end
   object.addEventListener("animationend", function () {
     objects.removeChild(object);
   });
+  checkCollision(); // Check for collision after each object is created
 }
 
 /**
@@ -105,37 +105,58 @@ function gameWin() {
 
 /**
  * =================================================================================================
+ *  Check if the player has hit an object
+ * =================================================================================================
+ */
+function checkCollision() {
+  const plane = document.getElementById("plane");
+  const planeRect = plane.getBoundingClientRect();
+  const objects = document.querySelectorAll(".object");
+  objects.forEach((object) => {
+    const objectRect = object.getBoundingClientRect();
+    if (
+      planeRect.left < objectRect.right &&
+      planeRect.right > objectRect.left &&
+      planeRect.top < objectRect.bottom &&
+      planeRect.bottom > objectRect.top
+    ) {
+      gameOver();
+    }
+  });
+}
+
+/**
+ * =================================================================================================
  *  START THE GAME
  * =================================================================================================
  */
 function startGame() {
   setGameLocationBackground(gameLocation);
   choosePlane("plane");
-  gameInterval = setInterval(objectsComeToPlayer, 1000);
+  gameInterval = setInterval(function () {
+    objectsComeToPlayer();
+    checkCollision();
+  }, 1000);
   movePlane();
-
-  // Start the timer
   let timerValue = 30;
   const timerElement = document.getElementById("timer");
   const timerInterval = setInterval(function () {
     timerValue--;
+    score += 15;
     timerElement.textContent = timerValue;
     if (timerValue <= 0) {
       clearInterval(timerInterval);
     }
   }, 1000);
-
-  // Set a 30-second timer
   setTimeout(function () {
-    clearInterval(gameInterval); // Stop creating new objects
-    clearInterval(timerInterval); // Stop the timer
-    // Check if the player has hit an object
+    clearInterval(gameInterval);
+    clearInterval(timerInterval);
     if (score > 0) {
       gameWin();
     } else {
       gameOver();
     }
-  }, 30000); // 30000 milliseconds = 30 seconds
+  }, 30000);
 }
 
 startGame();
