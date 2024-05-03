@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/reset.css">
     <link rel="stylesheet" href="/public/css/minigames/pilot.css">
 
     <title>Minigame: Pilot</title>
 
 </head>
 <body>
-    
+    <main>
     <!-- Timer -->
     <div>
         <p>
@@ -20,14 +21,15 @@
     </div>
 
     <!-- Game -->
-    <section>
-    <div class="game">
+    <section class="game">
+    <div>
         <div id="objects"></div>
         <div id="plane" class="plane">
             <img src="/public/images/plane.svg" alt="plane">
         </div>
     </div>
 </section>
+</main>
 
     <script src="/public/js/minigames/pilot.js"></script>
 </body>

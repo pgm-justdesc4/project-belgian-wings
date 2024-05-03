@@ -3,6 +3,15 @@
 Plane
 ==================================================
 */
+.game {
+  /* Set the size of the game area */
+  width: 50rem;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid black;
+}
 
 .plane {
   /* Position the plane at the bottom center of the game area */
@@ -18,8 +27,8 @@ Plane
 }
 
 .object {
-  width: 2rem;
-  height: 2rem;
+  width: 4rem;
+  height: 4rem;
   background-color: black;
   position: absolute;
   /* Start the objects at the top of the game area */
@@ -34,10 +43,4 @@ Plane
   100% {
     top: 100%;
   }
-}
-
-.game {
-  width: 50rem;
-  margin: 0 auto;
-  overflow: hidden;
 }

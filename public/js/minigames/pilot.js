@@ -1,8 +1,7 @@
-/**
- * =================================================================================================
- *  Set game location background
- * =================================================================================================
- */
+let score = 0; // Initialize score
+let gameInterval; // Initialize gameInterval
+
+// Deze code is VERLOPIG, later komt data uit de database
 const gameLocation = "Belgium";
 const locations = [
   {
@@ -11,8 +10,11 @@ const locations = [
   },
 ];
 
-let score = 0; // Initialize score
-let gameInterval; // Initialize gameInterval
+/**
+ * =================================================================================================
+ *  Set game location background
+ * =================================================================================================
+ */
 
 function setGameLocationBackground(gameLocation) {
   locations.forEach((location) => {
@@ -35,20 +37,31 @@ function choosePlane(planeId) {
 
 /**
  * =================================================================================================
- *  Let objects come to the player (30 seconds game)
+ *  Let objects come to the player
  * =================================================================================================
  */
 function objectsComeToPlayer() {
   const objects = document.getElementById("objects");
   const object = document.createElement("div");
+  const gameArea = document.querySelector(".game");
+  const gameAreaRect = gameArea.getBoundingClientRect();
+
   object.classList.add("object");
-  object.style.left = Math.random() * window.innerWidth + "px";
+
+  let leftPos = Math.random() * gameAreaRect.width;
+  if (leftPos < 0) {
+    leftPos = 0;
+  } else if (leftPos > gameAreaRect.width - object.offsetWidth) {
+    leftPos = gameAreaRect.width - object.offsetWidth;
+  }
+
+  object.style.left = leftPos + "px";
   object.style.animationDuration = "1s";
   objects.appendChild(object);
   object.addEventListener("animationend", function () {
     objects.removeChild(object);
   });
-  checkCollision(); // Check for collision after each object is created
+  checkCollision();
 }
 
 /**
@@ -60,8 +73,9 @@ function movePlane() {
   let mouseDown = false;
   let startX;
 
-  // Get the plane element
+  // Get the plane and game area elements
   const plane = document.getElementById("plane");
+  const gameArea = document.querySelector(".game");
 
   // Add event listeners
   plane.addEventListener("mousedown", function (e) {
@@ -73,7 +87,16 @@ function movePlane() {
     if (!mouseDown) return;
     e.preventDefault();
     let x = e.clientX - startX;
-    plane.style.left = x + "px";
+    let gameAreaRect = gameArea.getBoundingClientRect();
+
+    // Constrain the plane within the game area
+    if (x < gameAreaRect.left) {
+      x = gameAreaRect.left;
+    } else if (x > gameAreaRect.right - plane.offsetWidth) {
+      x = gameAreaRect.right - plane.offsetWidth;
+    }
+
+    plane.style.left = x - gameAreaRect.left + "px";
   });
 
   window.addEventListener("mouseup", function () {
@@ -83,31 +106,16 @@ function movePlane() {
 
 /**
  * =================================================================================================
- *  If the player hits an object, the game is over. The player can see the score and the best score.
+ *  Check if the player has hit an object
  * =================================================================================================
  */
+
 function gameOver() {
   // Stop the game and show the score
   clearInterval(gameInterval);
   alert("Game over! Your score is: " + score);
 }
 
-/**
- * =================================================================================================
- *  If the player can avoid all objects for 30 seconds, the player wins. The player can see the score and the best score.
- * =================================================================================================
- */
-function gameWin() {
-  // Stop the game and show the score
-  clearInterval(gameInterval);
-  alert("You win! Your score is: " + score);
-}
-
-/**
- * =================================================================================================
- *  Check if the player has hit an object
- * =================================================================================================
- */
 function checkCollision() {
   const plane = document.getElementById("plane");
   const planeRect = plane.getBoundingClientRect();
@@ -127,17 +135,37 @@ function checkCollision() {
 
 /**
  * =================================================================================================
+ *  Set game win + add scores to the players account.
+ * =================================================================================================
+ */
+function gameWin() {
+  // Stop the game and show the score
+  clearInterval(gameInterval);
+  alert("You win! Your score is: " + score);
+}
+
+/**
+ * =================================================================================================
  *  START THE GAME
  * =================================================================================================
  */
 function startGame() {
+  // Set the game location
   setGameLocationBackground(gameLocation);
+
+  // Choose a plane to play with
   choosePlane("plane");
+
+  // Let the objects fall
   gameInterval = setInterval(function () {
     objectsComeToPlayer();
     checkCollision();
   }, 1000);
+
+  // Let the plane move
   movePlane();
+
+  // Make the timer work + add score per second
   let timerValue = 30;
   const timerElement = document.getElementById("timer");
   const timerInterval = setInterval(function () {
@@ -148,15 +176,6 @@ function startGame() {
       clearInterval(timerInterval);
     }
   }, 1000);
-  setTimeout(function () {
-    clearInterval(gameInterval);
-    clearInterval(timerInterval);
-    if (score > 0) {
-      gameWin();
-    } else {
-      gameOver();
-    }
-  }, 30000);
 }
 
 startGame();
