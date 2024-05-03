@@ -1,8 +1,8 @@
 import { body } from "express-validator";
 
 export default [
-  body("firstname").notEmpty().withMessage("Voornaam is verplicht"),
-  body("lastname").notEmpty().withMessage("Achternaam is verplicht"),
+  body("name").notEmpty().withMessage("Voornaam is verplicht"),
+  body("lastName").notEmpty().withMessage("Achternaam is verplicht"),
   body("email")
     .notEmpty()
     .withMessage("E-mail is verplicht")

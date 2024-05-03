@@ -1,6 +1,8 @@
-import user from "../models/user.js";
-import userStats from "../models/userStats.js";
+import user from "../../models/user.js";
+import userStats from "../../models/user_stats.js";
 import jwt from "jsonwebtoken";
+import { validationResult } from "express-validator";
+import { create } from "express-handlebars";
 
 export async function createUser(req, res) {
   const errors = validationResult(req);
@@ -10,6 +12,7 @@ export async function createUser(req, res) {
       ...errors,
     });
   }
+  console.log(req.body);
 
   if (!user.query().findOne({ email: req.body.email })) {
     return res.json({
@@ -18,8 +21,19 @@ export async function createUser(req, res) {
     });
   }
 
-  await user.query().insert(req.body);
+  const newUser = await createUserStats();
+  console.log(newUser.id);
+
+  const test = await user
+    .query()
+    .insert({ ...req.body, user_stats_id: newUser.id });
+  console.log(test);
   res.redirect("/login");
+}
+
+async function createUserStats() {
+  const newUserStats = await userStats.query().insert({});
+  return newUserStats;
 }
 
 export async function loginUser(req, res) {
@@ -53,7 +67,7 @@ export async function loginUser(req, res) {
 }
 
 export async function minigameFinished(req, res) {
-  const userStats = await userStats.query().findOne({ user_id: req.user.id });
+  const user = await userStats.query().findOne({ user_id: req.user.id });
 
   const initialXp = 1000;
   const growthFactor = 1.2;
@@ -64,11 +78,11 @@ export async function minigameFinished(req, res) {
   const level = userStats.level;
 
   if (totalXp >= xpToNextLevel) {
-    userStats.level += 1;
-    userStats.xp = totalXp - xpToNextLevel;
+    user.level += 1;
+    user.xp = totalXp - xpToNextLevel;
   }
 
-  await userStats.$query().patchAndFetch({ xp: userStats.xp });
+  await user.$query().patchAndFetch({ xp: user.xp });
   res.json({
     status: "success",
     message: "xp updated",
