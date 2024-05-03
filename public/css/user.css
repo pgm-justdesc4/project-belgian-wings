@@ -4,7 +4,7 @@
     font-style: normal;
   }  
 
-.register {
+.user {
     font-family: "Bebas Neue", sans-serif;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
         }
     }
     
-    .register--svg {
+    .user--svg {
         width: 50%;
         margin: 4rem auto;
     }
