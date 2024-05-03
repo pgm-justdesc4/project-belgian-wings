@@ -1,12 +1,12 @@
 function progress(){
-    var percent = document.querySelector('.percent');
-    var progress = document.querySelector('.progress');
-    var text = document.querySelector('.text');
+    const percent = document.querySelector('.percent');
+    const progress = document.querySelector('.progress');
+    const text = document.querySelector('.text');
 
-    var count = 4;
-    var per = 16;
+    let count = 4;
+    let per = 16;
     
-    var loading = setInterval(animate, 50);
+    const loading = setInterval(animate, 50);
     function animate(){
       if(count == 100 && per == 400){
         percent.classList.add("text-blink");
