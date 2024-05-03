@@ -166,14 +166,15 @@ function startGame() {
   movePlane();
 
   // Make the timer work + add score per second
-  let timerValue = 30;
+  let timerValue = 0;
   const timerElement = document.getElementById("timer");
   const timerInterval = setInterval(function () {
-    timerValue--;
+    timerValue++;
     score += 15;
     timerElement.textContent = timerValue;
-    if (timerValue <= 0) {
+    if (timerValue >= 30) {
       clearInterval(timerInterval);
+      gameWin();
     }
   }, 1000);
 }
