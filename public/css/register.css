@@ -3,10 +3,16 @@
     flex-direction: column;
 
     .register--title {
-        margin: 0 auto;
+        margin: 2rem auto;
+        color: white;
     }
 
     .register--text {
-        font-style: italic;
+        margin: 2rem auto;
+        color: white;
+    }
+
+    .register--svg {
+        fill: red;
     }
 }
