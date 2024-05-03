@@ -1,5 +1,6 @@
 let score = 0; // Initialize score
-let gameInterval; // Initialize gameInterval
+let gameInterval; // Declare gameInterval
+let timerInterval; // Declare timerInterval
 
 // Deze code is VERLOPIG, later komt data uit de database
 const gameLocation = "Belgium";
@@ -29,10 +30,35 @@ function setGameLocationBackground(gameLocation) {
  *  Choose the plane (a better plane is faster, objects will come faster to the player)
  * =================================================================================================
  */
+let planes = [
+  {
+    id: "normal-plane",
+    speed: "1s",
+    image: "/public/images/minigames/pilot/planes/normal-plane.svg",
+  },
+  {
+    id: "medium-plane",
+    speed: "0.8s",
+    image: "/public/images/minigames/pilot/planes/medium-plane.svg",
+  },
+  {
+    id: "hard-plane",
+    speed: "0.6s",
+    image: "/public/images/minigames/pilot/planes/hard-plane.svg",
+  },
+];
+
 function choosePlane(planeId) {
-  const plane = document.getElementById(planeId);
-  // Set the chosen plane as active
-  plane.classList.add("active");
+  let selectedPlane = planes.find((plane) => plane.id === planeId);
+  if (selectedPlane) {
+    selectedPlaneSpeed = selectedPlane.speed;
+    selectedPlaneSpeedInMs = parseFloat(selectedPlane.speed) * 1000;
+    document.getElementById("plane").querySelector("img").src =
+      selectedPlane.image;
+
+    document.querySelector(".choose-plane").style.display = "none";
+    startGame();
+  }
 }
 
 /**
@@ -56,17 +82,16 @@ function objectsComeToPlayer() {
   }
 
   object.style.left = leftPos + "px";
-  object.style.animationDuration = "1s";
+  object.style.animationDuration = selectedPlaneSpeed;
   objects.appendChild(object);
   object.addEventListener("animationend", function () {
     objects.removeChild(object);
   });
-  checkCollision();
 }
 
 /**
  * =================================================================================================
- *  Able to move the plane left and right (use the mouse to move the plane).
+ *  Move the plane left and right
  * =================================================================================================
  */
 function movePlane() {
@@ -78,24 +103,28 @@ function movePlane() {
   const gameArea = document.querySelector(".game");
 
   // Add event listeners
-  plane.addEventListener("mousedown", function (e) {
+  let planeRect;
+
+  window.addEventListener("mousedown", function (e) {
     mouseDown = true;
-    startX = e.clientX - plane.getBoundingClientRect().left;
+    planeRect = plane.getBoundingClientRect();
+    startX = e.clientX - planeRect.left;
   });
 
   window.addEventListener("mousemove", function (e) {
     if (!mouseDown) return;
     e.preventDefault();
-    let x = e.clientX - startX;
     let gameAreaRect = gameArea.getBoundingClientRect();
+    let planeRect = plane.getBoundingClientRect();
+    let x = e.clientX - gameAreaRect.left - planeRect.width / 2;
 
-    if (x < gameAreaRect.left) {
-      x = gameAreaRect.left;
-    } else if (x > gameAreaRect.right - plane.offsetWidth) {
-      x = gameAreaRect.right - plane.offsetWidth;
+    if (x < 0) {
+      x = 0;
+    } else if (x > gameAreaRect.width - planeRect.width) {
+      x = gameAreaRect.width - planeRect.width;
     }
 
-    plane.style.left = x - gameAreaRect.left + "px";
+    plane.style.left = x + "px";
   });
 
   window.addEventListener("mouseup", function () {
@@ -109,12 +138,16 @@ function movePlane() {
  * =================================================================================================
  */
 
+// Game over popup
 function gameOver() {
   // Stop the game and show the score
   clearInterval(gameInterval);
-  alert("Game over! Your score is: " + score);
+  alert("Game over!");
+
+  restartGame();
 }
 
+// Check if the player has hit an object
 function checkCollision() {
   const plane = document.getElementById("plane");
   const planeRect = plane.getBoundingClientRect();
@@ -132,13 +165,31 @@ function checkCollision() {
   });
 }
 
+// Restart the game
+function restartGame() {
+  score = 0;
+
+  const objects = document.getElementById("objects");
+  while (objects.firstChild) {
+    objects.removeChild(objects.firstChild);
+  }
+
+  const plane = document.getElementById("plane");
+  plane.style.left = "50%";
+
+  const timerElement = document.getElementById("timer");
+  timerElement.textContent = "0";
+  clearInterval(timerInterval);
+
+  document.querySelector(".choose-plane").style.display = "block";
+}
+
 /**
  * =================================================================================================
  *  Set game win + add scores to the players account.
  * =================================================================================================
  */
 function gameWin() {
-  // Stop the game and show the score
   clearInterval(gameInterval);
   alert("You win! Your score is: " + score);
 }
@@ -159,7 +210,7 @@ function startGame() {
   gameInterval = setInterval(function () {
     objectsComeToPlayer();
     checkCollision();
-  }, 1000);
+  }, selectedPlaneSpeedInMs);
 
   // Let the plane move
   movePlane();
@@ -167,7 +218,7 @@ function startGame() {
   // Make the timer work + add score per second
   let timerValue = 0;
   const timerElement = document.getElementById("timer");
-  const timerInterval = setInterval(function () {
+  timerInterval = setInterval(function () {
     timerValue++;
     score += 15;
     timerElement.textContent = timerValue;
@@ -178,4 +229,8 @@ function startGame() {
   }, 1000);
 }
 
-startGame();
+document.querySelectorAll(".planes .plane").forEach((planeElement) => {
+  planeElement.addEventListener("click", function () {
+    choosePlane(planeElement.alt);
+  });
+});

@@ -4,12 +4,36 @@ STANDARD
 ==================================================
 */
 .game {
-  width: 50rem;
-  height: 100vh;
+  width: 40rem;
+  height: 80vh;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
   border: 1px solid black;
+}
+
+/*
+================================================== 
+Choose plane
+==================================================
+*/
+.choose-plane {
+  text-align: center;
+}
+
+.planes {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.planes .plane {
+  margin: 0 1rem;
+  cursor: pointer;
+  width: 6.5rem;
+  position: static;
+  transform: translate(0);
 }
 
 /*
@@ -25,7 +49,7 @@ Plane
 }
 
 .plane img {
-  width: 7rem;
+  width: 10rem;
 }
 
 /*
