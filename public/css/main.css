@@ -3,16 +3,16 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 
+
+    label {
+        margin-right: auto;
+    }
+
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
         color: white;
-
-        & label {
-            margin-bottom: 0.5rem;
-            align-items: left;
-        }
 
         & input {
             justify-content: center;
