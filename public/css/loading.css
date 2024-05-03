@@ -70,22 +70,55 @@ body{
       opacity: 1;
     }
   }
+
   // ----------------- END-LOADING -----------------
 
   // ----------------- LOGO ------------------------
 
-  .logo{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+ 
+  * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
   }
 
-  .logo path:nth-child(1){
-    fill: var(--secondary-color);
-    stroke-dasharray: 100px;
+  .logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    
+    
+    .icon {
+     width: 50%;
+     max-width: 300px;
+     
+     path {
+      fill: transparent;
+      stroke-width: 5;
+      stroke-dasharray: 3000;
+      stroke-dashoffset: -3000;
+      
+      &.is-active {
+        animation: icon 4s 1 forwards;
+      }
+     }
+    }
   }
-  .logo path:nth-child(2){
-  }
-  .logo path:nth-child(3){
-  }
+    @keyframes icon {
+      50% {
+       stroke-dashoffset: 0;
+      }
+      75% {
+       fill: transparent;
+       stroke-width: 5px;
+      }
+      100% {
+       stroke-dashoffset: 0;
+       fill: var(--secondary-color);
+       stroke-width: 0px;
+       
+      }
+     }
