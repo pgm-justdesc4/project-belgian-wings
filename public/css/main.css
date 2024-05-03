@@ -1,7 +1,4 @@
 body {
-  background-image: url("../imgs/Earth_background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
 
   form {
     display: flex;
