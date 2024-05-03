@@ -18,6 +18,7 @@ app.get("/user", getUser);
 app.get("/userStats", getUserStats);
 app.post("/api/addUser", authregistervalidation, createUser);
 app.post("/api/login", authloginvalidation, loginUser);
+app.post("/api/minigameFinished", minigameFinished);
 
 app.listen(port, () => {
   console.log("example app listening on port", `http://localhost:${port}`);
