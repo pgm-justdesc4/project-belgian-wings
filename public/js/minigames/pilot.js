@@ -143,15 +143,6 @@ function movePlane() {
  * =================================================================================================
  */
 
-// Game over popup
-function gameOver() {
-  // Stop the game and show the score
-  clearInterval(gameInterval);
-  alert("Game over!");
-
-  restartGame();
-}
-
 // Check if the player has hit an object
 function checkCollision() {
   const plane = document.getElementById("plane");
@@ -165,12 +156,16 @@ function checkCollision() {
       planeRect.top < objectRect.bottom &&
       planeRect.bottom > objectRect.top
     ) {
-      gameOver();
+      gameOver(gameInterval, restartGame);
     }
   });
 }
 
-// Restart the game
+/**
+ * =================================================================================================
+ *  RESTART THE GAME
+ * =================================================================================================
+ */
 function restartGame() {
   score = 0;
 
@@ -187,16 +182,6 @@ function restartGame() {
   clearInterval(timerInterval);
 
   document.querySelector(".choose-plane").style.display = "block";
-}
-
-/**
- * =================================================================================================
- *  Set game win + add scores to the players account.
- * =================================================================================================
- */
-function gameWin() {
-  clearInterval(gameInterval);
-  alert("You win! Your score is: " + score);
 }
 
 /**
@@ -231,7 +216,7 @@ function startGame() {
     timerElement.textContent = timerValue;
     if (timerValue >= 30) {
       clearInterval(timerInterval);
-      gameWin();
+      gameWin(gameInterval, score);
     }
   }, 1000);
 }
