@@ -30,7 +30,7 @@ function setGameLocationBackground(gameLocation) {
  *  Choose the plane (a better plane is faster, objects will come faster to the player)
  * =================================================================================================
  */
-let planes = [
+const planes = [
   {
     id: "normal-plane",
     speed: "1s",
@@ -61,6 +61,13 @@ function choosePlane(planeId) {
   }
 }
 
+// Choose a plane to play with
+document.querySelectorAll(".planes .plane").forEach((planeElement) => {
+  planeElement.addEventListener("click", function () {
+    choosePlane(planeElement.alt);
+  });
+});
+
 /**
  * =================================================================================================
  *  Let objects come to the player
@@ -74,11 +81,9 @@ function objectsComeToPlayer() {
 
   object.classList.add("object");
 
-  let leftPos = Math.random() * gameAreaRect.width;
+  let leftPos = Math.random() * (gameAreaRect.width - object.offsetWidth);
   if (leftPos < 0) {
     leftPos = 0;
-  } else if (leftPos > gameAreaRect.width - object.offsetWidth) {
-    leftPos = gameAreaRect.width - object.offsetWidth;
   }
 
   object.style.left = leftPos + "px";
@@ -116,11 +121,11 @@ function movePlane() {
     e.preventDefault();
     let gameAreaRect = gameArea.getBoundingClientRect();
     let planeRect = plane.getBoundingClientRect();
-    let x = e.clientX - gameAreaRect.left - planeRect.width / 2;
+    let x = e.clientX - gameAreaRect.left - startX;
 
     if (x < 0) {
       x = 0;
-    } else if (x > gameAreaRect.width - planeRect.width) {
+    } else if (x + planeRect.width > gameAreaRect.width) {
       x = gameAreaRect.width - planeRect.width;
     }
 
@@ -203,8 +208,10 @@ function startGame() {
   // Set the game location
   setGameLocationBackground(gameLocation);
 
-  // Choose a plane to play with
-  choosePlane("plane");
+  // Change the plane's class to avoid slide issues
+  const plane = document.getElementById("plane");
+  plane.classList.remove("plane");
+  plane.classList.add("plane-game");
 
   // Let the objects fall within the gaming time
   gameInterval = setInterval(function () {
@@ -228,9 +235,3 @@ function startGame() {
     }
   }, 1000);
 }
-
-document.querySelectorAll(".planes .plane").forEach((planeElement) => {
-  planeElement.addEventListener("click", function () {
-    choosePlane(planeElement.alt);
-  });
-});

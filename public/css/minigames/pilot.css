@@ -4,7 +4,7 @@ STANDARD
 ==================================================
 */
 .game {
-  width: 40rem;
+  width: 30rem;
   height: 80vh;
   position: relative;
   overflow: hidden;
@@ -48,8 +48,15 @@ Plane
   transform: translateX(-50%);
 }
 
-.plane img {
+.plane img,
+.plane-game img {
   width: 10rem;
+  max-width: none;
+}
+
+.plane-game {
+  position: absolute;
+  bottom: 0;
 }
 
 /*
