@@ -1,8 +1,6 @@
 body {
-  background-image: url("../imgs/Earth_background.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-
+  background-color: hsl(200, 80%, 20%);
+  
   form {
     display: flex;
     flex-direction: column;
