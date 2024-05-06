@@ -19,6 +19,7 @@ body {
   font-family: "AzoSans-Black";
   display: flex;
   flex-direction: column;
+}
 
   & h1,
   p {
@@ -58,4 +59,3 @@ body {
     color: white;
     width: 80%;
   }
-}
