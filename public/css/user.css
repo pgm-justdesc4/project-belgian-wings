@@ -1,17 +1,30 @@
+body {
+    background-image: url("../imgs/Earth_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .bebas-neue-regular {
     font-family: "Bebas Neue", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }  
+  } 
+  
+  @font-face {
+    font-family: "AzoSans-Black";
+    src: url("../fonts/AzoSans-Thin.ttf") format("truetype");
+  
+  }
 
-.register {
-    font-family: "Bebas Neue", sans-serif;
+.user {
+    font-family: "AzoSans-Black";
     display: flex;
     flex-direction: column;
 
     & h1, p {
         margin: 2rem auto;
         color: white;
+        font-weight: bold;
     }
 
     & a {
@@ -32,9 +45,18 @@
             color: white;
         }
     }
-    
-    .register--svg {
+
+    & .user--svg {
         width: 50%;
         margin: 4rem auto;
     }
+
+    & .user--info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        width: 80%;
+    }
 }
+
