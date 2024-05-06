@@ -1,5 +1,5 @@
 import user from "../models/user.js";
-import userStats from "../models/userStats.js";
+import userStats from "../models/user_stats.js";
 
 export async function getUser(req, res) {
   const foundUser = await user.query().findOne("id", req.body.id);

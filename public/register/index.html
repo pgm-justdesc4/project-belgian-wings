@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/user.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/register.css" />
     <title>Register</title>
-</head>
-<body>
-    <section class="user">
-    <img class="user--svg" src="../imgs/Logo_Airforce_White.svg">
-        <h1>Registreren</h1>
-        <form>
-            <div class="user--info">
-                <label for="firstname">Voornaam:</label>
-                <input type="text" id="firstname" name="firstname" required>
-            </div>
+  </head>
+  <body>
+    <section class="register">
+      <img class="register--svg" src="../imgs/Logo_Airforce_White.svg" />
+      <h1>Registreren</h1>
+      <form
+        action="/api/register"
+        method="POST"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <label for="name">Voornaam:</label>
+        <input type="text" id="firstname" name="name" required />
 
-            <div class="user--info">
-                <label for="lastname">Achternaam:</label>
-                <input type="text" id="lastname" name="lastname" required>
-            </div>
+        <label for="lastName">Achternaam:</label>
+        <input type="text" id="lastname" name="lastName" required />
 
-            <div class="user--info">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
-            <div class="user--info">
-                <label for="password">Wachtwoord:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password" required />
 
-            <button type="submit">Registreren</button>
-        </form>
-        <p>Heb je al een account bij ons? <a class="user--link" href="/public/login">Meld je aan!</a></p>
+        <label for="birthdate">Geboortedatum:</label>
+        <input type="date" id="birthdate" name="birthdate" required />
+
+        <button type="submit">Registreren</button>
+      </form>
+      <p>
+        Heb je al een account bij ons?
+        <a class="register--link" href="/login">Meld je aan!</a>
+      </p>
     </section>
-</body>
+  </body>
 </html>

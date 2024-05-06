@@ -1,6 +1,7 @@
-import user from "../models/user.js";
-import userStats from "../models/userStats.js";
+import user from "../../models/user.js";
+import userStats from "../../models/user_stats.js";
 import jwt from "jsonwebtoken";
+import { validationResult } from "express-validator";
 
 export async function createUser(req, res) {
   const errors = validationResult(req);
@@ -18,12 +19,23 @@ export async function createUser(req, res) {
     });
   }
 
-  await user.query().insert(req.body);
+  const newUser = await createUserStats();
+  const username = `user${Math.random() * 1000000000000}`;
+
+  await user
+    .query()
+    .insert({ ...req.body, user_stats_id: newUser.id, username: username });
   res.redirect("/login");
+}
+
+async function createUserStats() {
+  const newUserStats = await userStats.query().insert({});
+  return newUserStats;
 }
 
 export async function loginUser(req, res) {
   const errors = validationResult(req);
+  console.log(req.body);
   if (!errors.isEmpty()) {
     return res.json({
       status: "error",
@@ -40,20 +52,24 @@ export async function loginUser(req, res) {
 
   const loginUser = await user.query().findOne({ email: req.body.email });
 
-  if (loginUser !== req.body.password) {
+  if (loginUser.password != req.body.password) {
     return res.json({
       status: "error",
       message: "Password is incorrect",
     });
   }
-  const token = jwt.sign({ id: loginUser.id }, process.env.JWT_SECRET);
+  console.log(process.env.JWT_SECRET);
+  const token = jwt.sign(
+    { id: loginUser.id, username: loginUser },
+    process.env.JWT_SECRET
+  );
   res.cookie("token", token, { httpOnly: true });
 
   res.redirect("/home");
 }
 
 export async function minigameFinished(req, res) {
-  const userStats = await userStats.query().findOne({ user_id: req.user.id });
+  const user = await userStats.query().findOne({ user_id: req.user.id });
 
   const initialXp = 1000;
   const growthFactor = 1.2;
@@ -64,11 +80,11 @@ export async function minigameFinished(req, res) {
   const level = userStats.level;
 
   if (totalXp >= xpToNextLevel) {
-    userStats.level += 1;
-    userStats.xp = totalXp - xpToNextLevel;
+    user.level += 1;
+    user.xp = totalXp - xpToNextLevel;
   }
 
-  await userStats.$query().patchAndFetch({ xp: userStats.xp });
+  await user.$query().patchAndFetch({ xp: user.xp });
   res.json({
     status: "success",
     message: "xp updated",

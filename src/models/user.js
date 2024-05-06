@@ -5,7 +5,7 @@ import { Model } from "objection";
 Model.knex(knex);
 
 // related models
-import UserStats from "./UserStats.js";
+import UserStats from "./user_stats.js";
 
 // define the User model
 class User extends Model {
