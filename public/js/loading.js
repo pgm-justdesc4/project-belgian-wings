@@ -1,3 +1,4 @@
+
 function progress() {
   var percent = document.querySelector(".percent");
   var progress = document.querySelector(".progress");
