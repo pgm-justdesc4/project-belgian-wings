@@ -1,17 +1,16 @@
-
 function progress() {
-  var percent = document.querySelector(".percent");
-  var progress = document.querySelector(".progress");
-  var text = document.querySelector(".text");
+  let percent = document.querySelector(".percent");
+  let progress = document.querySelector(".progress");
+  let text = document.querySelector(".text");
 
-  var count = 4;
-  var per = 16;
+  let count = 4;
+  let per = 16;
 
-  var loading = setInterval(animate, 50);
+  let loading = setInterval(animate, 50);
   function animate() {
     if (count == 100 && per == 400) {
       percent.classList.add("text-blink");
-      text.style.display = "block";
+      // text.style.display = "block"; (ERROR)
       clearInterval(loading);
       window.location.href = "/login";
     } else {
