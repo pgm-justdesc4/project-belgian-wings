@@ -34,17 +34,17 @@ const planes = [
   {
     id: "normal-plane",
     speed: "1s",
-    image: "/public/images/minigames/pilot/planes/normal-plane.svg",
+    image: "/assets/images/minigames/pilot/planes/normal-plane.svg",
   },
   {
     id: "medium-plane",
     speed: "0.8s",
-    image: "/public/images/minigames/pilot/planes/medium-plane.svg",
+    image: "/assets/images/minigames/pilot/planes/medium-plane.svg",
   },
   {
     id: "hard-plane",
     speed: "0.6s",
-    image: "/public/images/minigames/pilot/planes/hard-plane.svg",
+    image: "/assets/images/minigames/pilot/planes/hard-plane.svg",
   },
 ];
 
