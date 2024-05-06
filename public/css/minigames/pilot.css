@@ -1,0 +1,84 @@
+/*
+================================================== 
+STANDARD
+==================================================
+*/
+.game {
+  width: 30rem;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+/*
+================================================== 
+Choose plane
+==================================================
+*/
+.choose-plane {
+  text-align: center;
+}
+
+.planes {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.planes .plane {
+  margin: 0 1rem;
+  cursor: pointer;
+  width: 6.5rem;
+  position: static;
+  transform: translate(0);
+}
+
+/*
+================================================== 
+Plane
+==================================================
+*/
+.plane {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.plane img,
+.plane-game img {
+  width: 10rem;
+  max-width: none;
+}
+
+.plane-game {
+  position: absolute;
+  bottom: 0;
+}
+
+/*
+================================================== 
+Falling objects
+==================================================
+*/
+.object {
+  width: 4rem;
+  height: 4rem;
+  background-color: black;
+  position: absolute;
+  /* Start the objects at the top of the game area */
+  top: 0;
+  animation: moveObject 4s linear;
+}
+
+@keyframes moveObject {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
