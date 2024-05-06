@@ -35,6 +35,7 @@ async function createUserStats() {
 
 export async function loginUser(req, res) {
   const errors = validationResult(req);
+  console.log(req.body);
   if (!errors.isEmpty()) {
     return res.json({
       status: "error",
@@ -51,13 +52,17 @@ export async function loginUser(req, res) {
 
   const loginUser = await user.query().findOne({ email: req.body.email });
 
-  if (loginUser !== req.body.password) {
+  if (loginUser.password != req.body.password) {
     return res.json({
       status: "error",
       message: "Password is incorrect",
     });
   }
-  const token = jwt.sign({ id: loginUser.id }, process.env.JWT_SECRET);
+  console.log(process.env.JWT_SECRET);
+  const token = jwt.sign(
+    { id: loginUser.id, username: loginUser },
+    process.env.JWT_SECRET
+  );
   res.cookie("token", token, { httpOnly: true });
 
   res.redirect("/home");
