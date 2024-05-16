@@ -90,3 +90,16 @@ export async function minigameFinished(req, res) {
     message: "xp updated",
   });
 }
+
+export async function changePassword(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.json({
+      status: "error",
+      ...errors,
+    });
+  }
+
+  await user.query().patchAndFetchById(req.user.id, { password: req.body.password });
+  res.redirect("/login");
+}
