@@ -22,6 +22,7 @@ export async function createUser(req, res) {
   const newUser = await createUserStats();
   const username = `user${Math.random() * 1000000000000}`;
 
+  req.body.email = req.body.email.toLowerCase();
   await user
     .query()
     .insert({ ...req.body, user_stats_id: newUser.id, username: username });
@@ -35,7 +36,6 @@ async function createUserStats() {
 
 export async function loginUser(req, res) {
   const errors = validationResult(req);
-  console.log(req.body);
   if (!errors.isEmpty()) {
     return res.json({
       status: "error",
@@ -43,6 +43,7 @@ export async function loginUser(req, res) {
     });
   }
 
+  req.body.email = req.body.email.toLowerCase();
   if (!(await user.query().findOne({ email: req.body.email }))) {
     return res.json({
       status: "error",
@@ -58,7 +59,6 @@ export async function loginUser(req, res) {
       message: "Password is incorrect",
     });
   }
-  console.log(process.env.JWT_SECRET);
   const token = jwt.sign(
     { id: loginUser.id, username: loginUser },
     process.env.JWT_SECRET
