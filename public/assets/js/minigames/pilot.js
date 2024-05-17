@@ -110,6 +110,7 @@ function movePlane() {
   // Add event listeners
   let planeRect;
 
+  //event listeners for mouse
   window.addEventListener("mousedown", function (e) {
     mouseDown = true;
     planeRect = plane.getBoundingClientRect();
@@ -133,6 +134,27 @@ function movePlane() {
   });
 
   window.addEventListener("mouseup", function () {
+    mouseDown = false;
+  });
+
+  //event listeners for touch
+
+  window.addEventListener("touchstart", function (e) {
+    mouseDown = true;
+    planeRect = plane.getBoundingClientRect();
+    startX = e.clientX - planeRect.left;
+  });
+
+  window.addEventListener("touchmove", function (e) {
+    if (!mouseDown) return;
+    e.preventDefault();
+    let planeRect = plane.getBoundingClientRect();
+    let x = e.touches[0].clientX - planeRect.width / 2; // change this line
+
+    plane.style.left = x + "px";
+  });
+
+  window.addEventListener("touchend", function () {
     mouseDown = false;
   });
 }
