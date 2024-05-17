@@ -2,7 +2,7 @@ let score = 0;
 let gameInterval;
 let timerInterval;
 let strikes = 0;
-let selectedPlaneSpeedInMs = 30;
+let selectedPlaneSpeedInMs = 75;
 let timer = 30;
 
 const gameArea = document.getElementById("gameArea");
@@ -134,6 +134,20 @@ function moveEnemies() {
       enemy.style.left = `${leftPos}px`;
       enemy.style.top = `${topPos}px`;
     }
+
+    // Friendly forces kill enemies when there is collision
+    const friendlies = document.querySelectorAll(".friendly");
+    friendlies.forEach((friendly) => {
+      const friendlyRect = friendly.getBoundingClientRect();
+      if (
+        enemyRect.left < friendlyRect.right &&
+        enemyRect.right > friendlyRect.left &&
+        enemyRect.top < friendlyRect.bottom &&
+        enemyRect.bottom > friendlyRect.top
+      ) {
+        enemy.remove();
+      }
+    });
   });
 }
 
