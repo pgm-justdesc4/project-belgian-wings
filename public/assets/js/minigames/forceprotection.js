@@ -1,6 +1,6 @@
-let score = 0;
 let gameInterval;
 let timerInterval;
+let score = 0;
 let strikes = 0;
 let enemyMoveSpeed = 75;
 let timer = 30;
@@ -10,10 +10,12 @@ const objectsContainer = document.getElementById("objects");
 
 /**
  * =================================================================================================
- *  Initialize friendly forces and enemies
+ *  Initialize friendly forces at random positions
  * =================================================================================================
  */
-const forceSize = 2 * 16; // Convert rem to px assuming 1rem = 16px
+
+// Check if two forces are colliding
+const forceSize = 32;
 function checkCollision(newForce, existingForces) {
   for (let i = 0; i < existingForces.length; i++) {
     const existingForce = existingForces[i];
@@ -27,6 +29,7 @@ function checkCollision(newForce, existingForces) {
   return false;
 }
 
+// Initialize friendly forces at random positions
 function initializeForces() {
   const friendlyForces = [];
   while (friendlyForces.length < 5) {
@@ -95,7 +98,6 @@ function spawnEnemies() {
       enemy.classList.add("easy");
     }
 
-    // Decide which side to spawn from
     const side = Math.floor(Math.random() * 4);
     switch (side) {
       case 0: // Top
@@ -185,25 +187,26 @@ function moveEnemies() {
       enemy.style.top = `${topPos}px`;
     }
 
-    // Friendly forces kill enemies when there is collision
-    // const friendlies = document.querySelectorAll(".friendly");
-    // friendlies.forEach((friendly) => {
-    //   const friendlyRect = friendly.getBoundingClientRect();
-    //   if (
-    //     enemyRect.left < friendlyRect.right &&
-    //     enemyRect.right > friendlyRect.left &&
-    //     enemyRect.top < friendlyRect.bottom &&
-    //     enemyRect.bottom > friendlyRect.top
-    //   ) {
-    //     enemy.remove();
-    //   }
-    // });
+    // Friendly forces/enemies remove on collision
+    const friendlies = document.querySelectorAll(".friendly");
+    friendlies.forEach((friendly) => {
+      const friendlyRect = friendly.getBoundingClientRect();
+      if (
+        enemyRect.left < friendlyRect.right &&
+        enemyRect.right > friendlyRect.left &&
+        enemyRect.top < friendlyRect.bottom &&
+        enemyRect.bottom > friendlyRect.top
+      ) {
+        enemy.remove();
+        friendly.remove();
+      }
+    });
   });
 }
 
 /**
  * =================================================================================================
- *  Handle click events to destroy enemies or avoid friendly forces
+ *  Handle click events to destroy enemies and if 3 times friendly forces are clicked, game over
  * =================================================================================================
  */
 
@@ -234,6 +237,7 @@ function handleClick(event) {
     }
   });
 
+  // Check if friendly forces are clicked
   const friendlies = document.querySelectorAll(".friendly");
   friendlies.forEach((friendly) => {
     const rect = friendly.getBoundingClientRect();
@@ -262,7 +266,7 @@ function restartGame() {
   timer = 30;
   objectsContainer.innerHTML = "";
   initializeForces();
-  startGame();
+  window.location.reload();
 }
 
 /**
@@ -297,6 +301,7 @@ function startGame() {
 
   // Handle click events
   gameArea.addEventListener("click", handleClick);
+  gameArea.addEventListener("touchstart", handleClick);
 }
 
 /**
