@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(200, 80%, 20%);
+  background-color: var(--primary-color);
   
   form {
     display: flex;

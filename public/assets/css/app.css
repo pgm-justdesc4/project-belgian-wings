@@ -2,5 +2,5 @@
 @import url("./variables.css");
 @import url("./user.css");
 @import url("./components/input.css");
-@import url("./layouts/avatar.css");
-
+@import url("./components/avatar.css");
+@import url("./components/button.css");
