@@ -3,17 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-    <link rel="stylesheet" href="../assets/css/user.css" />
+    <link rel="stylesheet" href="../assets/css/app.css" />
     <title>Register</title>
   </head>
   <body>
-    <section class="register">
-      <img class="register--svg" src="../assets/images/Logo_Airforce_White.svg" />
+    <section class="user">
+      <img class="user--svg" src="../assets/images/Logo_Airforce_White.svg" />
       <h1>Registreren</h1>
       <form
-        action="/api/register"
+        action="/api/user"
         method="POST"
         enctype="application/x-www-form-urlencoded"
       >
@@ -36,7 +34,7 @@
       </form>
       <p>
         Heb je al een account bij ons?
-        <a class="register--link" href="/login">Meld je aan!</a>
+        <a class="user--link" href="/login">Meld je aan!</a>
       </p>
     </section>
   </body>
