@@ -13,12 +13,33 @@ const objectsContainer = document.getElementById("objects");
  *  Initialize friendly forces and enemies
  * =================================================================================================
  */
+const forceSize = 2 * 16; // Convert rem to px assuming 1rem = 16px
+function checkCollision(newForce, existingForces) {
+  for (let i = 0; i < existingForces.length; i++) {
+    const existingForce = existingForces[i];
+    const dx = Math.abs(newForce.x - existingForce.x);
+    const dy = Math.abs(newForce.y - existingForce.y);
+
+    if (dx < forceSize && dy < forceSize) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function initializeForces() {
-  const friendlyForces = Array.from({ length: 5 }, () => ({
-    x: Math.floor(Math.random() * (gameArea.clientWidth - 20)),
-    y: Math.floor(Math.random() * (gameArea.clientHeight - 20)),
-    angle: Math.random() * 2 * Math.PI,
-  }));
+  const friendlyForces = [];
+  while (friendlyForces.length < 5) {
+    const newForce = {
+      x: Math.floor(Math.random() * (gameArea.clientWidth - forceSize)),
+      y: Math.floor(Math.random() * (gameArea.clientHeight - forceSize)),
+      angle: Math.random() * 2 * Math.PI,
+    };
+
+    if (!checkCollision(newForce, friendlyForces)) {
+      friendlyForces.push(newForce);
+    }
+  }
 
   friendlyForces.forEach((force) => {
     const friendly = document.createElement("div");

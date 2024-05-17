@@ -42,7 +42,7 @@ Game stuff
 
 .enemy {
   background-color: red;
-  transition: left 1s, top 1s;
+  transition: left 1.75s, top 1.75s;
 }
 
 .protected-object {
