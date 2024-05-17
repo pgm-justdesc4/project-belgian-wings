@@ -1,8 +1,9 @@
-// body {
-//   background-image: url("../images/Earth_background.png");
-//   background-size: cover;
-//   background-repeat: no-repeat;
-// }
+
+body {
+  /* background-image: url("../images/Earth_background.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .bebas-neue-regular {
   font-family: "Bebas Neue", sans-serif;
