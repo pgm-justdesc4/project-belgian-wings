@@ -1,12 +1,12 @@
-let score = 0; // Initialize score
-let gameInterval; // Declare gameInterval
-let timerInterval; // Declare timerInterval
-let strikes = 0; // Initialize strike count
-let selectedPlaneSpeedInMs = 30; // Default speed
+let score = 0;
+let gameInterval;
+let timerInterval;
+let strikes = 0;
+let selectedPlaneSpeedInMs = 30;
 let timer = 30;
 
-const gameArea = document.getElementById("gameArea"); // Game area element
-const objectsContainer = document.getElementById("objects"); // Container for game objects
+const gameArea = document.getElementById("gameArea");
+const objectsContainer = document.getElementById("objects");
 
 /**
  * =================================================================================================
@@ -15,9 +15,9 @@ const objectsContainer = document.getElementById("objects"); // Container for ga
  */
 function initializeForces() {
   const friendlyForces = Array.from({ length: 5 }, () => ({
-    x: Math.floor(Math.random() * (gameArea.clientWidth - 20)), // Subtract the width of a game element
-    y: Math.floor(Math.random() * (gameArea.clientHeight - 20)), // Subtract the height of a game element
-    angle: Math.random() * 2 * Math.PI, // Random initial angle
+    x: Math.floor(Math.random() * (gameArea.clientWidth - 20)),
+    y: Math.floor(Math.random() * (gameArea.clientHeight - 20)),
+    angle: Math.random() * 2 * Math.PI,
   }));
 
   friendlyForces.forEach((force) => {
@@ -63,7 +63,7 @@ function spawnEnemies() {
   const spawnInterval = setInterval(() => {
     const enemy = document.createElement("div");
     enemy.classList.add("enemy");
-    // Randomize enemy type
+
     if (Math.random() > 0.5) {
       enemy.classList.add("hard");
     } else {
@@ -71,19 +71,20 @@ function spawnEnemies() {
     }
     enemy.style.left = `${Math.floor(
       Math.random() * (gameArea.clientWidth - 20)
-    )}px`; // Subtract the width of a game element
+    )}px`;
+
     enemy.style.top = `${Math.floor(
       Math.random() * (gameArea.clientHeight - 20)
-    )}px`; // Subtract the height of a game element
-    enemy.setAttribute("data-angle", Math.random() * 360); // Randomize initial angle
-    enemy.setAttribute("data-phase", "circling"); // Set initial phase to circling
+    )}px`;
+
+    enemy.setAttribute("data-angle", Math.random() * 360);
+    enemy.setAttribute("data-phase", "circling");
     objectsContainer.appendChild(enemy);
 
-    // Stop spawning enemies when the timer reaches 0
     if (timer <= 0) {
       clearInterval(spawnInterval);
     }
-  }, 1000); // Spawn a new enemy every second
+  }, 1000);
 }
 
 /**
@@ -106,10 +107,9 @@ function moveEnemies() {
     const phase = enemy.getAttribute("data-phase");
 
     if (phase === "circling") {
-      // Circling Phase
       let angle = parseFloat(enemy.getAttribute("data-angle"));
       angle += 0.01;
-      const radius = 150; // Circling radius
+      const radius = 150;
       const leftPos =
         centerX + Math.cos(angle) * radius - enemy.clientWidth / 2;
       const topPos =
@@ -118,17 +118,14 @@ function moveEnemies() {
       enemy.style.left = `${leftPos}px`;
       enemy.style.top = `${topPos}px`;
 
-      // After a certain time or condition, switch to attacking phase
       if (Math.random() < 0.01) {
-        // Random condition to switch phase
         enemy.setAttribute("data-phase", "attacking");
       }
     } else if (phase === "attacking") {
-      // Attacking Phase
       let angle = parseFloat(enemy.getAttribute("data-angle"));
       angle += 0.01;
       const radius =
-        Math.sqrt((enemyX - centerX) ** 2 + (enemyY - centerY) ** 2) - 2; // Decrease radius to spiral inward
+        Math.sqrt((enemyX - centerX) ** 2 + (enemyY - centerY) ** 2) - 2;
       const leftPos =
         centerX + Math.cos(angle) * radius - enemy.clientWidth / 2;
       const topPos =
@@ -196,12 +193,12 @@ function handleClick(event) {
  * =================================================================================================
  */
 function restartGame() {
-  score = 0; // Reset score
-  strikes = 0; // Reset strikes
-  timer = 30; // Reset timer
-  objectsContainer.innerHTML = ""; // Clear game objects
-  initializeForces(); // Reinitialize forces
-  startGame(); // Restart the game
+  score = 0;
+  strikes = 0;
+  timer = 30;
+  objectsContainer.innerHTML = "";
+  initializeForces();
+  startGame();
 }
 
 /**
@@ -217,20 +214,17 @@ function updateTimer() {
 }
 // Start the game
 function startGame() {
-  // Initialize forces
   initializeForces();
 
-  // Main game loop: Move enemies and check their positions
   gameInterval = setInterval(() => {
     moveEnemies();
     moveFriendlyForces();
     checkEnemyPositions();
   }, selectedPlaneSpeedInMs);
 
-  // Timer to track game duration and decrease timer
   timerInterval = setInterval(() => {
-    timer -= 1; // Decrease timer
-    updateTimer(); // Update timer display
+    timer -= 1;
+    updateTimer();
     if (timer <= 0) {
       clearInterval(timerInterval);
       gameWin(gameInterval, score);
