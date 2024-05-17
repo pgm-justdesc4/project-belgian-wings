@@ -1,0 +1,7 @@
+:root{
+    --primary-color: hsl(200, 80%, 20%);
+    --secondary-color: hsl(33.9, 100%, 56.27%);
+    --tertiary-color: hsl(0, 0%, 50%);
+    --text-color: white;
+    --font-family: "AzoSans-Black";
+}
