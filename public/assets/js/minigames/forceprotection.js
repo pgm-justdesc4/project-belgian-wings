@@ -2,7 +2,7 @@ let score = 0;
 let gameInterval;
 let timerInterval;
 let strikes = 0;
-let selectedPlaneSpeedInMs = 75;
+let enemyMoveSpeed = 75;
 let timer = 30;
 
 const gameArea = document.getElementById("gameArea");
@@ -33,6 +33,8 @@ function initializeForces() {
 }
 
 // Move the friendly forces
+let timeStep = 0;
+
 function moveFriendlyForces() {
   const friendlies = document.querySelectorAll(".friendly");
   const protectedObject = document.getElementById("protectedObject");
@@ -40,10 +42,12 @@ function moveFriendlyForces() {
   const centerX = rect.left + rect.width / 2;
   const centerY = rect.top + rect.height / 2;
 
+  timeStep += 0.01;
+
   friendlies.forEach((friendly) => {
     let angle = parseFloat(friendly.getAttribute("data-angle"));
     angle += 0.01;
-    const radius = 100;
+    const radius = 100 + 50 * Math.sin(timeStep);
     const leftPos =
       centerX + Math.cos(angle) * radius - friendly.clientWidth / 2;
     const topPos =
@@ -69,17 +73,42 @@ function spawnEnemies() {
     } else {
       enemy.classList.add("easy");
     }
-    enemy.style.left = `${Math.floor(
-      Math.random() * (gameArea.clientWidth - 20)
-    )}px`;
 
-    enemy.style.top = `${Math.floor(
-      Math.random() * (gameArea.clientHeight - 20)
-    )}px`;
+    // Decide which side to spawn from
+    const side = Math.floor(Math.random() * 4);
+    switch (side) {
+      case 0: // Top
+        enemy.style.left = `${Math.random() * 100}%`;
+        enemy.style.top = `${-enemy.clientHeight}px`;
+        break;
+      case 1: // Right
+        enemy.style.left = `${100 + enemy.clientWidth}px`;
+        enemy.style.top = `${Math.random() * 100}%`;
+        break;
+      case 2: // Bottom
+        enemy.style.left = `${Math.random() * 100}%`;
+        enemy.style.top = `${100 + enemy.clientHeight}px`;
+        break;
+      case 3: // Left
+        enemy.style.left = `${-enemy.clientWidth}px`;
+        enemy.style.top = `${Math.random() * 100}%`;
+        break;
+    }
 
     enemy.setAttribute("data-angle", Math.random() * 360);
     enemy.setAttribute("data-phase", "circling");
     objectsContainer.appendChild(enemy);
+
+    // Set final position after a short delay
+    setTimeout(() => {
+      enemy.style.left = `${Math.floor(
+        Math.random() * (gameArea.clientWidth - 20)
+      )}px`;
+
+      enemy.style.top = `${Math.floor(
+        Math.random() * (gameArea.clientHeight - 20)
+      )}px`;
+    }, 100);
 
     if (timer <= 0) {
       clearInterval(spawnInterval);
@@ -136,18 +165,18 @@ function moveEnemies() {
     }
 
     // Friendly forces kill enemies when there is collision
-    const friendlies = document.querySelectorAll(".friendly");
-    friendlies.forEach((friendly) => {
-      const friendlyRect = friendly.getBoundingClientRect();
-      if (
-        enemyRect.left < friendlyRect.right &&
-        enemyRect.right > friendlyRect.left &&
-        enemyRect.top < friendlyRect.bottom &&
-        enemyRect.bottom > friendlyRect.top
-      ) {
-        enemy.remove();
-      }
-    });
+    // const friendlies = document.querySelectorAll(".friendly");
+    // friendlies.forEach((friendly) => {
+    //   const friendlyRect = friendly.getBoundingClientRect();
+    //   if (
+    //     enemyRect.left < friendlyRect.right &&
+    //     enemyRect.right > friendlyRect.left &&
+    //     enemyRect.top < friendlyRect.bottom &&
+    //     enemyRect.bottom > friendlyRect.top
+    //   ) {
+    //     enemy.remove();
+    //   }
+    // });
   });
 }
 
@@ -234,7 +263,7 @@ function startGame() {
     moveEnemies();
     moveFriendlyForces();
     checkEnemyPositions();
-  }, selectedPlaneSpeedInMs);
+  }, enemyMoveSpeed);
 
   timerInterval = setInterval(() => {
     timer -= 1;
