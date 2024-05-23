@@ -5,6 +5,7 @@
 @import url("./components/avatar.css");
 @import url("./components/button.css");
 @import url("./layout/news.css");
+@import url("/assets/css/layout/avatar.css");
 
   #chartdiv {
     width: 100%;
