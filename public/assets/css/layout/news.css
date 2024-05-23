@@ -18,13 +18,43 @@
         margin: 2rem;
     }
 }
-
     & .news__spotlight {
         align-items: center;
+        position: relative;
+
         & img {
             filter: blur(4px);
             -webkit-filter: blur(4px);
         }
-}
+        & h2, h3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            margin-bottom: 0;
+        }
+        & h2 {
+            top: 50%;
+            left: 25%;
+            color: var(--secondary-color);
+        }
+        & h3 {
+            top: 70%;
+            left: 30%;
+            color: white;
+        }
+    }
+    & .news__articles {
+        width: 100%;
+
+
+        & .news__article {
+            width: 80%;
+            margin: 0 auto;
+            color:white;
+            border: 1px solid white;
+        }
+    }
 }
 
