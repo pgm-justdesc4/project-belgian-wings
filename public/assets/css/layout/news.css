@@ -32,15 +32,12 @@
         }
         & h2, h3 {
             position: absolute;
-            top: 50%;
-            left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
-            margin-bottom: 0;
+            
         }
         & h2 {
             top: 50%;
-            left: 25%;
+            left: 30%;
             color: var(--secondary-color);
         }
         & h3 {
