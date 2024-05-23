@@ -25,6 +25,7 @@
         & img {
             filter: blur(4px);
             -webkit-filter: blur(4px);
+            margin: 2rem 0;
         }
         & h2, h3 {
             position: absolute;
@@ -47,12 +48,11 @@
     }
     & .news__articles {
         width: 100%;
-        margin-top: 4rem;
 
 
         & .news__article {
             width: 80%;
-            margin: 0 auto;
+            margin: 2rem auto;
             color:white;
             border: 1px solid white;
         }
