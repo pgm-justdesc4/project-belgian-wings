@@ -17,6 +17,9 @@
         text-decoration: none;
         margin: 2rem;
     }
+    & .active {
+        text-decoration: underline;
+    }
 }
     & .news__spotlight {
         align-items: center;
@@ -55,7 +58,7 @@
             margin: 2rem auto;
             color:white;
             border: 1px solid white;
-        }
+        }    
     }
 }
 
