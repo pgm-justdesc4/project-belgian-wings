@@ -1,0 +1,30 @@
+/*
+================================================== 
+STANDARD
+==================================================
+*/
+.game-area {
+  width: 26.875rem;
+  height: 80vh;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.close {
+  display: none;
+}
+
+/*
+  ================================================== 
+  Game stuff
+  ==================================================
+  */
+
+/* Mission select */
+.mission-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
