@@ -27,8 +27,6 @@ polygonTemplate.fill = am4core.color("#FF6633");
 polygonTemplate.stroke = am4core.color("#000033");
 polygonTemplate.strokeWidth = 0.5;
 polygonTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
-polygonTemplate.url = "https://www.datadrum.com/main.php?package={id}";
-polygonTemplate.urlTarget = "_blank";
 
 var graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
 graticuleSeries.mapLines.template.line.stroke = am4core.color("#ffffff");
