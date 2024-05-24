@@ -1,8 +1,10 @@
 .news {
     & .news__head {
+    font-family: 'AzoSans-Regular';
     text-align: center;
 
     & h1 {
+        font-family: "AzoSans-Bold";
         margin: 0;
         color: white;
         font-weight: bold;
