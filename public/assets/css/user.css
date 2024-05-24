@@ -3,21 +3,11 @@ body {
   /* background-image: url("../images/Earth_background.png"); */
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "AzoSans-Black";
-  src: url("../fonts/AzoSans-Black.ttf") format("truetype");
+  font-family: 'AzoSans', sans-serif;
 }
 
 .user {
-  font-family: "AzoSans-Black";
+  font-family: "AzoSans-Black", sans-serif;
   display: flex;
   flex-direction: column;
 }
