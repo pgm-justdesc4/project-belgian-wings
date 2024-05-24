@@ -36,8 +36,8 @@ function buildGame(difficulty) {
     eventListener(difficulty);
   } else {
     gameGrid.classList.add("hard");
-    // buildHardGame();
-    // eventListener(difficulty);
+    buildHardGame();
+    eventListener(difficulty);
   }
 }
 
@@ -47,6 +47,7 @@ function eventListener(difficulty) {
   let startingColorId = null;
   let finishedColors = [];
   let lastClicked = null;
+  let isLastClickedCorrect = false;
   gameGrid.addEventListener("click", (e) => {
     if (
       !e.target.classList.contains(activeColor) &&
@@ -94,6 +95,20 @@ function eventListener(difficulty) {
       ) {
         activeColor = "orange";
         startingColorId = e.target.id;
+      } else if (
+        e.target.classList.contains("brown") &&
+        !finishedColors.includes("brown") &&
+        e.target.id !== startingColorId
+      ) {
+        activeColor = "brown";
+        startingColorId = e.target.id;
+      } else if (
+        e.target.classList.contains("pink") &&
+        !finishedColors.includes("pink") &&
+        e.target.id !== startingColorId
+      ) {
+        activeColor = "pink";
+        startingColorId = e.target.id;
       }
     }
     if (
@@ -103,18 +118,27 @@ function eventListener(difficulty) {
     ) {
       if (!finishedColors.includes("red"))
         e.target.children[0].classList.remove("mini-red");
-      if (!finishedColors.includes("blue"))
+      else if (!finishedColors.includes("blue"))
         e.target.children[0].classList.remove("mini-blue");
-      if (!finishedColors.includes("green"))
+      else if (!finishedColors.includes("green"))
         e.target.children[0].classList.remove("mini-green");
-      if (!finishedColors.includes("yellow"))
+      else if (!finishedColors.includes("yellow"))
         e.target.children[0].classList.remove("mini-yellow");
-      if (!finishedColors.includes("purple"))
+      else if (!finishedColors.includes("purple"))
         e.target.children[0].classList.remove("mini-purple");
-      if (!finishedColors.includes("orange"))
+      else if (!finishedColors.includes("orange"))
         e.target.children[0].classList.remove("mini-orange");
+      else if (!finishedColors.includes("brown"))
+        e.target.children[0].classList.remove("mini-brown");
+      else if (!finishedColors.includes("pink"))
+        e.target.children[0].classList.remove("mini-pink");
+      else {
+        isLastClickedCorrect = false;
+      }
       e.target.children[0].classList.add(`mini-${activeColor}`);
       console.log("removing class", finishedColors);
+    } else {
+      isLastClickedCorrect = true;
     }
 
     if (!e.target.children.length) {
@@ -123,6 +147,8 @@ function eventListener(difficulty) {
         verticallyAdjacent = 5;
       } else if (difficulty == 2) {
         verticallyAdjacent = 6;
+      } else {
+        verticallyAdjacent = 7;
       }
       if (
         lastClicked - e.target.id == -1 ||
@@ -130,13 +156,19 @@ function eventListener(difficulty) {
         lastClicked - e.target.id == verticallyAdjacent ||
         lastClicked - e.target.id == -verticallyAdjacent
       ) {
-        console.log("valid move", lastClicked, e.target.id, startingColorId);
+        console.log(
+          "valid move",
+          isLastClickedCorrect,
+          lastClicked,
+          e.target.id,
+          startingColorId
+        );
         if (!e.target.classList.contains("dot")) {
           const gameGridChild = document.createElement("div");
           gameGridChild.classList.add(`mini-${activeColor}`);
           e.target.appendChild(gameGridChild);
         }
-        lastClicked = e.target.id;
+        if (isLastClickedCorrect) lastClicked = e.target.id;
         if (
           e.target.id !== startingColorId &&
           e.target.classList.contains(activeColor)
@@ -151,7 +183,8 @@ function eventListener(difficulty) {
 
     if (
       (difficulty == 1 && finishedColors.length == 4) ||
-      (difficulty == 2 && finishedColors.length == 6)
+      (difficulty == 2 && finishedColors.length == 6) ||
+      (difficulty == 3 && finishedColors.length == 8)
     ) {
       gameWin(null, 0);
     }
@@ -241,6 +274,99 @@ function buildMediumGame() {
       "green",
     ],
   };
+  let counter = 0;
+  for (const grid of gridOptions[1]) {
+    const gameGridChild = document.createElement("div");
+    gameGridChild.classList.add("game-grid-child");
+    if (grid) {
+      const gameGridChildColor = document.createElement("div");
+      gameGridChildColor.classList.add(grid);
+      gameGridChildColor.classList.add("dot");
+      gameGridChildColor.id = counter;
+      gameGridChild.classList.add("dot");
+      gameGridChild.classList.add(grid);
+      gameGridChild.appendChild(gameGridChildColor);
+    }
+    gameGridChild.id = counter;
+    gameGrid.appendChild(gameGridChild);
+    counter++;
+  }
+}
+
+function buildHardGame() {
+  let gameGrid = document.querySelector(".game-grid");
+  //  gameColors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "brown"];
+  const gridOptions = {
+    1: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "yellow",
+      "green",
+      null,
+      "green",
+      null,
+      "orange",
+      "yellow",
+      "red",
+      "brown",
+      "purple",
+      null,
+      null,
+      null,
+      null,
+      "red",
+      null,
+      null,
+      "pink",
+      null,
+      null,
+      null,
+      "blue",
+      null,
+      "brown",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "purple",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "brown",
+      null,
+      null,
+      null,
+      null,
+      "orange",
+      null,
+      "pink",
+      null,
+      null,
+      null,
+      null,
+      null,
+    ],
+  };
+
+  test = [
+    [null, null, null, null, null, null, null],
+    ["yellow", "green", null, "green", null, "orange", "yellow"],
+    ["red", "brown", "purple", null, null, null, null],
+    ["red", null, null, "pink", null, null, null],
+    ["blue", null, "brown", null, null, null, null],
+    [null, null, "purple", null, null, null, null],
+    [null, "brown", null, null, null, null, "orange"],
+    [null, "pink", null, null, null, null, null],
+  ];
   let counter = 0;
   for (const grid of gridOptions[1]) {
     const gameGridChild = document.createElement("div");
