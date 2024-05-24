@@ -1,12 +1,35 @@
+:root{
+  --primary-color: hsl(216, 87%, 9%);
+  --secondary-color: hsl(34, 91%, 56%);
+  --text-color: white;
+}
+
 .pilot{
+  position: relative;
   height: 100vh;
   height: 100svh;
 
-  & .pilot__container{
-    background-image: url('/assets/images/minigames/pilot/pilot-bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: fixed;
+
+   &  .pilot__container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      
+  }
+  & .pilot__container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/assets/images/minigames/pilot/planes/7D9FA75556B7ED8FF06928020B873761-boven-de-wolken.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px);
+      z-index: -1;
+  }
 
     & .pilot__container--box{
       margin: 1rem;
@@ -21,12 +44,12 @@
       & .pilot__container--timer{
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
+        color: white;
       }
     }
 
     
-  }
-}
+ }
 
 
 /*
@@ -48,19 +71,41 @@ Choose plane
 ==================================================
 */
 .choose-plane {
+  position: absolute;
   text-align: center;
+  width: 60%;
+  height: 20vh;
+  background-color: rgba(255, 255, 255, 0.728);
+  left: 5rem;
+  top: 15rem;
+  z-index: 2;
 
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+
+
+  & h2 {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-family: var(--font-family);
+  }
 
   & .planes {
     display: flex;
+    justify-content: center;
     margin-top: 0.5rem;
     margin-bottom: 2rem;
-    background-color: rgba(72, 72, 72, 0.5);
-    width: 45%;
+    
     padding: .5rem;
   
     & .plane{
-      width: 15%;
+      width: 20%;
+      background-color: var(--primary-color);
+      padding: .6rem;
     }
   }
 }
@@ -109,7 +154,6 @@ Falling objects
   width: 4rem;
   height: 4rem;
   background-color: #ee0303;
-  translate: rotate(90deg);
   position: absolute;
   /* Start the objects at the top of the game area */
   top: 0;

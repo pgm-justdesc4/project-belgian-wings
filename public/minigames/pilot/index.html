@@ -6,7 +6,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/reset.css" />
-    <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/pilot.css" />
 
     <title>Minigame: Pilot</title>
   </head>
@@ -14,12 +14,13 @@
     <main class="pilot__container">
       <!-- Timer -->
       <div class="pilot__container--box">
-        <p class="pilot__container--timer"> <span id="timer">0:00</span></p>
+        <p class="pilot__container--timer"> <span id="timer">0</span></p>
       </div>
 
       <!-- Choose plane -->
 
       <section class="choose-plane">
+        <h2>Choose your plane</h2>
         <div class="planes">
           <img
             src="/assets/images/minigames/pilot/planes/normal-plane.svg"
@@ -36,13 +37,11 @@
             alt="hard-plane"
             class="plane"
           />
-        </div>
       </section>
 
       <!-- Game -->
       <section class="game">
-          <div id="objects">
-          </div>
+          <div id="objects"></div>
           <figure id="plane" class="plane">
             <img
               src="/assets/images/minigames/pilot/planes/normal-plane.svg"
