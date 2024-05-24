@@ -125,3 +125,27 @@ export async function changePassword(req, res) {
     .patchAndFetchById(req.user.id, { password: req.body.password });
   res.redirect("/login");
 }
+
+async function changeAvatar(req, res) {
+  const decoded = jwtDecode(req.cookies.token);
+  await userStats
+    .query()
+    .patchAndFetchById(decoded.id, { avatar: `${req.body.avatar}.png` });
+  res.redirect("/settings");
+}
+
+async function changeName(req, res) {
+  console.log(req.body);
+  const decoded = jwtDecode(req.cookies.token);
+  await user.query().patchAndFetchById(decoded.id, { username: req.body.name });
+  res.redirect("/settings");
+}
+
+export async function settingsChange(req, res) {
+  const change = req.body.change;
+  if (change === "avatar") {
+    changeAvatar(req, res);
+  } else if (change === "name") {
+    changeName(req, res);
+  }
+}

@@ -28,24 +28,28 @@
 
        
         <figure>
-            <img class="avatar" src="/assets/images/avatar-1.png" alt="avatar-1">
-            <img class="avatar" src="/assets/images/avatar-2.png" alt="avatar-2">
-            <img class="avatar" src="/assets/images/avatar-3.png" alt="avatar-3">
-            <img class="avatar" src="/assets/images/avatar-4.png" alt="avatar-4">
-            <img class="avatar" src="/assets/images/avatar-5.png" alt="avatar-5">
-            <img class="avatar" src="/assets/images/avatar-6.png" alt="avatar-6">
-            <img class="avatar" src="/assets/images/avatar-7.png" alt="avatar-7">
-            <img class="avatar" src="/assets/images/avatar-8.png" alt="avatar-8">
-            <img class="avatar" src="/assets/images/avatar-9.png" alt="avatar-9">
-            <img class="avatar" src="/assets/images/avatar-10.png" alt="avatar-10">
-            <img class="avatar" src="/assets/images/avatar-11.png" alt="avatar-11">
-            <img class="avatar" src="/assets/images/avatar-12.png" alt="avatar-12">
+            <img class="avatar" src="/assets/images/avatar-1.png" alt="avatar-1" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-2.png" alt="avatar-2" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-3.png" alt="avatar-3" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-4.png" alt="avatar-4" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-5.png" alt="avatar-5" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-6.png" alt="avatar-6" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-7.png" alt="avatar-7" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-8.png" alt="avatar-8" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-9.png" alt="avatar-9" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-10.png" alt="avatar-10" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-11.png" alt="avatar-11" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
+            <img class="avatar" src="/assets/images/avatar-12.png" alt="avatar-12" onclick="document.querySelector('input[name=avatar]').value = this.alt;">
             <img class="avatar__overlay" src="/assets/images/avatar-unlock.png" alt="avatar-10">
             <img class="avatar__overlay" src="/assets/images/avatar-unlock.png" alt="avatar-11">
             <img class="avatar__overlay" src="/assets/images/avatar-unlock.png" alt="avatar-12">
         </figure>
-
-        <button class="btn--avatar">Select</button>
+    </div>
+    <form action="/api/settingsChange" method="POST">
+        <input type="hidden" name="avatar" value="" />
+        <input type="hidden" name="change" value="avatar" />
+        <button type="submit" class="btn--avatar">Select</button>
+    </form>
     </div>
 </body>
 </html>
