@@ -7,6 +7,7 @@ export async function getUser(req, res) {
 }
 
 export async function getUserStats(req, res) {
-  const foundUserStats = await userStats.query().findOne("id", req.body.id);
+  const decoded = jwtDecode(req.cookies.token);
+  const foundUserStats = await userStats.query().findOne("id", decoded.id);
   return (res.body.foundUserStats = foundUserStats);
 }

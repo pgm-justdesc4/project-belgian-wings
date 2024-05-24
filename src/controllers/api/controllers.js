@@ -1,6 +1,7 @@
 import user from "../../models/user.js";
 import userStats from "../../models/user_stats.js";
 import jwt from "jsonwebtoken";
+import { jwtDecode } from "jwt-decode";
 import { validationResult } from "express-validator";
 
 export async function createUser(req, res) {
@@ -60,7 +61,12 @@ export async function loginUser(req, res) {
     });
   }
   const token = jwt.sign(
-    { id: loginUser.id, username: loginUser },
+    {
+      id: loginUser.id,
+      user_stats_id: loginUser.user_stats_id,
+      username: loginUser.username,
+      email: loginUser.email,
+    },
     process.env.JWT_SECRET
   );
   res.cookie("token", token, { httpOnly: true });
@@ -69,22 +75,36 @@ export async function loginUser(req, res) {
 }
 
 export async function minigameFinished(req, res) {
-  const user = await userStats.query().findOne({ user_id: req.user.id });
+  const decoded = jwtDecode(req.cookies.token);
+  const user = await userStats.query().findOne({ id: decoded.user_stats_id });
 
   const initialXp = 1000;
   const growthFactor = 1.2;
 
-  const xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+  const xpToNextLevel = initialXp * Math.pow(growthFactor, user.level - 1);
 
-  const totalXp = req.body.xp + userStats.xp;
-  const level = userStats.level;
+  const totalXp = req.body.xp + user.xp;
+  console.log(totalXp);
+  let level = parseInt(user.level);
 
   if (totalXp >= xpToNextLevel) {
-    user.level += 1;
-    user.xp = totalXp - xpToNextLevel;
+    level = level + 1;
+    totalXp -= xpToNextLevel;
+    console.log("level up");
+    const xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+    if (totalXp >= xpToNextLevel) {
+      level = level + 1;
+      totalXp -= xpToNextLevel;
+      console.log("level up");
+    }
   }
 
-  await user.$query().patchAndFetch({ xp: user.xp });
+  console.log(level, totalXp);
+  await userStats
+    .query()
+    .findOne({ id: user.id })
+    .patch({ level: level, xp: totalXp });
+  console.log("xp updated");
   res.json({
     status: "success",
     message: "xp updated",
@@ -100,6 +120,8 @@ export async function changePassword(req, res) {
     });
   }
 
-  await user.query().patchAndFetchById(req.user.id, { password: req.body.password });
+  await user
+    .query()
+    .patchAndFetchById(req.user.id, { password: req.body.password });
   res.redirect("/login");
 }
