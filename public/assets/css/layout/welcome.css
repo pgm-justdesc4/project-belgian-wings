@@ -1,0 +1,15 @@
+.welcome {
+    background-size: cover;
+    color: #fff;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    & .welcome--svg {
+        width: 50%;
+        margin: 4rem auto;
+      }
+}
