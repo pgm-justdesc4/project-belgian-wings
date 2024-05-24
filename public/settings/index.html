@@ -10,22 +10,16 @@
     <section class="user">
         <h1>Instellingen</h1>
         <div class="avatar">
-            <img src="../assets/images/avatar-1.png" alt="Logo Airforce">
-            <a href="/settings/avatar">Wijzig avatar</a>
+            <img id="avatar" src alt="Logo Airforce">
+            <a href="/avatar">Wijzig avatar</a>
         </div>
-        <form>
+        <form action="/api/settingsChange" method="POST">
             <div class="user--info">
-                <label for="name">Voornaam:</label>
+                <label for="name">nickname:</label>
+                <input type="hidden" name="change" value="name" />
                 <input type="text" id="firstname" name="name" required />
             </div>
         </form>
-        <ul class="flex">
-                <p>Geluid</p>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                </label>
-        </ul>
             <ul class="flex">
                     <p>Geluid</p>
                     <label class="switch">
@@ -57,5 +51,6 @@
                 </label>
             </li>
     </section>
+    <script src="/assets/js/settings.js"></script>
 </body>
 </html>
