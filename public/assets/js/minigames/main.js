@@ -4,7 +4,7 @@
  * =================================================================================================
  */
 function gameWin(gameInterval, score) {
-  clearInterval(gameInterval);
+  if (gameInterval) clearInterval(gameInterval);
   alert("You win! Your score is: " + score);
 }
 
@@ -14,7 +14,7 @@ function gameWin(gameInterval, score) {
  * =================================================================================================
  */
 function gameOver(gameInterval, restartGame) {
-  clearInterval(gameInterval);
+  if (gameInterval) clearInterval(gameInterval);
   alert("Game over!");
 
   restartGame();
