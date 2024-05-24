@@ -110,7 +110,7 @@ function selectMission(event) {
   let missionIndex = event.target.getAttribute("data-index");
   let selectedMission = missions[missionIndex];
   missionList.classList.add("close");
-  console.log("Selected Mission: ", selectedMission);
+  console.log("Selected Mission:", selectedMission);
 }
 
 /**
