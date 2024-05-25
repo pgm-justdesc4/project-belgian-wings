@@ -27,7 +27,7 @@
       background-image: url('/assets/images/minigames/pilot/planes/7D9FA75556B7ED8FF06928020B873761-boven-de-wolken.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(5px);
+      filter: blur(6px);
       z-index: -1;
   }
 
@@ -154,6 +154,7 @@ Falling objects
   width: 4rem;
   height: 4rem;
   background-color: #ee0303;
+  border: 2px solid #fff;
   position: absolute;
   /* Start the objects at the top of the game area */
   top: 0;
