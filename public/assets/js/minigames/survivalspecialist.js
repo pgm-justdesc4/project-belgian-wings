@@ -58,9 +58,11 @@ function selectMission(event) {
 
   // Create a button to start the mission
   const startButton = document.getElementById("startButton");
+  startButton.style.display = "block";
   startButton.addEventListener("click", function () {
     console.log("Mission started:", selectedMission);
-    missionList.classList.add("close");
+    const $overlay = document.getElementById("overlay");
+    $overlay.style.display = "none";
   });
 }
 
