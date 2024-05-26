@@ -39,3 +39,13 @@ function gameOver(gameInterval, hasRestart = false, restart) {
 function restartGame() {
   location.reload();
 }
+
+/**
+ * =================================================================================================
+ *  RESTART GAME
+ * =================================================================================================
+ */
+
+function restartGame() {
+  location.reload();
+}
