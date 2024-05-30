@@ -12,5 +12,14 @@ export async function getUser(req, res) {
 export async function getUserStats(req, res) {
   const decoded = jwtDecode(req.cookies.token);
   const foundUserStats = await userStats.query().findOne("id", decoded.id);
+  console.log(foundUserStats);
   res.send(foundUserStats);
+}
+
+export async function getBadges(req, res) {
+  const decoded = jwtDecode(req.cookies.token);
+  const foundUserStats = await userStats.query().findOne("id", decoded.id);
+  const foundBadges = await foundUserStats.$relatedQuery("badges");
+  console.log(foundBadges);
+  res.send(foundBadges);
 }

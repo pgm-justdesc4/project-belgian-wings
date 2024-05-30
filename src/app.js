@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { getUser, getUserStats } from "./controllers/controllers.js";
+import { getUser, getUserStats, getBadges } from "./controllers/controllers.js";
 import {
   createUser,
   loginUser,
@@ -25,6 +25,7 @@ app.use(cookieParser());
 
 app.get("/user", getUser);
 app.get("/userStats", getUserStats);
+app.get("/badges", getBadges);
 app.post("/api/register", authregistervalidation, createUser);
 app.post("/api/login", authloginvalidation, loginUser);
 app.post("/api/minigameFinished", minigameFinished);

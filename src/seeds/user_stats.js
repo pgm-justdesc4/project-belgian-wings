@@ -11,6 +11,10 @@ const seed = async function (knex) {
       rank: "recruit",
       rank_image: "recruit.png",
       avatar: "avatar-1.png",
+      speedrun: 50,
+      wins: 1,
+      losses: 1,
+      badges_id: 1,
     },
     {
       id: 2,
@@ -19,6 +23,10 @@ const seed = async function (knex) {
       rank: "soldier",
       rank_image: "soldier.png",
       avatar: "avatar-2.png",
+      speedrun: 7,
+      wins: 10,
+      losses: 10,
+      badges_id: 2,
     },
   ]);
 };
