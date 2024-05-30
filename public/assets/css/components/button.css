@@ -41,7 +41,7 @@
   }
   
   .switch input:checked + .slider {
-    background-color: red;
+    background-color: orange;
   }
   
   .switch input:focus + .slider {
