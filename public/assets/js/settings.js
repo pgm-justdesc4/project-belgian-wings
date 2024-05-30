@@ -3,9 +3,13 @@ function init() {
 }
 
 async function activeAvatar() {
-  let user = await fetch("/userStats");
+  let userStats = await fetch("/userStats");
+  userStats = await userStats.json();
+  document.getElementById("avatar").src = `/assets/images/${userStats.avatar}`;
+
+  let user = await fetch("/user");
   user = await user.json();
-  document.getElementById("avatar").src = `/assets/images/${user.avatar}`;
+  document.getElementById("firstname").value = user.username;
 }
 
 init();
