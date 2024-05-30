@@ -5,11 +5,11 @@ import { Model } from "objection";
 Model.knex(knex);
 
 // import related models
-import badges from "./badges.js";
+import userStats from "./user_stats.js";
 
 export default class tasks extends Model {
   static get tableName() {
-    return "user_stats";
+    return "badges";
   }
 
   static get idColumn() {
@@ -22,14 +22,10 @@ export default class tasks extends Model {
       required: [],
       properties: {
         id: { type: "integer" },
-        xp: { type: "integer" },
-        level: { type: "integer" },
-        rank: { type: "string" },
-        rank_image: { type: "string" },
-        avatar: { type: "string" },
-        speedrun: { type: "integer" },
-        wins: { type: "integer" },
-        losses: { type: "integer" },
+        name: { type: "string" },
+        image: { type: "string" },
+        description: { type: "string" },
+        user_stats_id: { type: "integer" },
       },
     };
   }
@@ -37,11 +33,11 @@ export default class tasks extends Model {
   static get relationMappings() {
     return {
       badges: {
-        relation: Model.HasManyRelation,
-        modelClass: badges,
+        relation: Model.BelongsToOneRelation,
+        modelClass: userStats,
         join: {
-          from: "user_stats.id",
-          to: "badges.user_stats_id",
+          from: "badges.user_stats_id",
+          to: "user_stats.id",
         },
       },
     };
