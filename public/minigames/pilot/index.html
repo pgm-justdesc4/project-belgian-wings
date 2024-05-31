@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/pilot.css" />
+
+    <title>Minigame: Pilot</title>
+  </head>
+  <body>
+    <main>
+      <!-- Timer -->
+      <div>
+        <p>Timer: <span id="timer">0</span> seconds</p>
+      </div>
+
+      <!-- Choose plane -->
+
+      <section class="choose-plane">
+        <h2>Choose your plane</h2>
+        <div class="planes">
+          <img
+            src="/assets/images/minigames/pilot/planes/normal-plane.svg"
+            alt="normal-plane"
+            class="plane"
+          />
+          <img
+            src="/assets/images/minigames/pilot/planes/medium-plane.svg"
+            alt="medium-plane"
+            class="plane"
+          />
+          <img
+            src="/assets/images/minigames/pilot/planes/hard-plane.svg"
+            alt="hard-plane"
+            class="plane"
+          />
+      </section>
+
+      <!-- Game -->
+      <section class="game">
+          <div id="objects"></div>
+          <figure id="plane" class="plane">
+            <img
+              src="/assets/images/minigames/pilot/planes/normal-plane.svg"
+              alt="plane"
+            />
+          </figure>
+      </section>
+    </main>
+
+    <script src="/assets/js/minigames/main.js"></script>
+    <script src="/assets/js/minigames/pilot.js"></script>
+  </body>
+</html>

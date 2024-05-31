@@ -1,0 +1,137 @@
+.pilot{
+  height: 100vh;
+  height: 100svh;
+
+  & .pilot__container{
+    background-image: url('/assets/images/minigames/pilot/pilot-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+
+    & .pilot__container--box{
+      margin: 1rem;
+      background-color: rgba(72, 72, 72, 0.5);
+      border: 2px solid white ;
+      width: 3rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & .pilot__container--timer{
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
+
+    
+  }
+}
+
+
+/*
+================================================== 
+STANDARD
+==================================================
+*/
+.game {
+  width: 26.875rem;
+  height: 86vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/*
+================================================== 
+Choose plane
+==================================================
+*/
+.choose-plane {
+  text-align: center;
+
+
+  & .planes {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    background-color: rgba(72, 72, 72, 0.5);
+    width: 45%;
+    padding: .5rem;
+  
+    & .plane{
+      width: 15%;
+    }
+  }
+}
+
+
+
+.planes .plane {
+  margin: 0 1rem;
+  cursor: pointer;
+  width: 6.5rem;
+  position: static;
+  transform: translate(0);
+}
+
+
+
+/*
+================================================== 
+Plane
+==================================================
+*/
+.plane {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.plane img,
+.plane-game img {
+  width: 10rem;
+  max-width: none;
+}
+
+.plane-game {
+  position: absolute;
+  bottom: 0;
+}
+
+/*
+================================================== 
+Falling objects
+==================================================
+*/
+.object {
+  width: 4rem;
+  height: 4rem;
+  background-color: #ee0303;
+  position: absolute;
+  /* Start the objects at the top of the game area */
+  top: 0;
+  animation: moveObject 4s linear;
+}
+
+@keyframes moveObject {
+  0% {
+    top: 0;
+    scale: 0;
+    rotate: 90deg;
+  }
+
+  25%{
+    scale: .5;
+  }
+
+  90% {
+    scale: 1;
+  }
+
+  100% {
+    top: 100%;
+    rotate: 90deg;
+  }
+}
