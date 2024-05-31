@@ -63,8 +63,9 @@ function moveFriendlyForces() {
   const friendlies = document.querySelectorAll(".friendly");
   const protectedObject = document.getElementById("protectedObject");
   const rect = protectedObject.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
+  const gameAreaRect = gameArea.getBoundingClientRect(); // Get game area position
+  const centerX = rect.left + rect.width / 2 - gameAreaRect.left; // Subtract game area position
+  const centerY = rect.top + rect.height / 2 - gameAreaRect.top; // Subtract game area position
 
   timeStep += 0.01;
 
@@ -144,17 +145,21 @@ function spawnEnemies() {
  *  Move enemies towards the protected object
  * =================================================================================================
  */
+
 function moveEnemies() {
   const enemies = document.querySelectorAll(".enemy");
   const protectedObject = document.getElementById("protectedObject");
   const protectedRect = protectedObject.getBoundingClientRect();
-  const centerX = protectedRect.left + protectedRect.width / 2;
-  const centerY = protectedRect.top + protectedRect.height / 2;
+  const gameAreaRect = gameArea.getBoundingClientRect(); // Get game area position
+  const centerX =
+    protectedRect.left + protectedRect.width / 2 - gameAreaRect.left; // Subtract game area position
+  const centerY =
+    protectedRect.top + protectedRect.height / 2 - gameAreaRect.top; // Subtract game area position
 
   enemies.forEach((enemy) => {
     const enemyRect = enemy.getBoundingClientRect();
-    const enemyX = enemyRect.left + enemyRect.width / 2;
-    const enemyY = enemyRect.top + enemyRect.height / 2;
+    const enemyX = enemyRect.left + enemyRect.width / 2 - gameAreaRect.left; // Subtract game area position
+    const enemyY = enemyRect.top + enemyRect.height / 2 - gameAreaRect.top; // Subtract game area position
 
     const phase = enemy.getAttribute("data-phase");
 
@@ -249,24 +254,10 @@ function handleClick(event) {
     ) {
       strikes += 1;
       if (strikes >= 3) {
-        gameOver(gameInterval, restartGame);
+        gameOver(gameInterval);
       }
     }
   });
-}
-
-/**
- * =================================================================================================
- *  Restart the game
- * =================================================================================================
- */
-function restartGame() {
-  score = 0;
-  strikes = 0;
-  timer = 30;
-  objectsContainer.innerHTML = "";
-  initializeForces();
-  window.location.reload();
 }
 
 /**
@@ -322,7 +313,7 @@ function checkEnemyPositions() {
       enemyRect.top < protectedRect.bottom &&
       enemyRect.bottom > protectedRect.top
     ) {
-      gameOver(gameInterval, restartGame);
+      gameOver(gameInterval);
     }
   });
 }

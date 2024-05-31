@@ -119,7 +119,7 @@ $itemsGrid.addEventListener("click", function (event) {
       // Increase the wrong clicks counter and check if it's 3
       wrongClicks++;
       if (wrongClicks === 3) {
-        gameOver(null, restartGame);
+        gameOver(null);
       }
     }
   }
