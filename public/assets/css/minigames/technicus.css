@@ -3,14 +3,20 @@
 STANDARD
 ==================================================
 */
+
+.technicus{
+  background-image: url("/assets/images/minigames/technicus/212290_CHRISTIAN\ DECLOEDT.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
 .game {
   width: 26.875rem;
-  height: 80vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
   display: none;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 .timer {
@@ -23,16 +29,20 @@ Choose plane
 ==================================================
 */
 .choose-difficulty {
+background-color: transparent;
   text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
+  color: white;
 
   & .difficulties {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
     & .difficulty {
       display: flex;
@@ -42,6 +52,10 @@ Choose plane
       width: 6.5rem;
       position: static;
       transform: translate(0);
+
+      background-color: var(--secondary-color);
+      padding: .5rem 1rem;
+      border: none;
     }
   }
 }
