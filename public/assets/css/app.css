@@ -1,8 +1,8 @@
 @import url("./reset.css");
 @import url("./fonts.css");
 @import url("./variables.css");
-@import url("./user.css");
-@import url("./globe.css");
+@import url("./layout/user.css");
+@import url("./components/globe.css");
 @import url("./components/input.css");
 @import url("./components/avatar.css");
 @import url("./components/button.css");
