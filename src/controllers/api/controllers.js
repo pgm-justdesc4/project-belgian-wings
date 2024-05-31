@@ -60,6 +60,8 @@ export async function loginUser(req, res) {
       message: "Password is incorrect",
     });
   }
+
+  res.clearCookie("token");
   const token = jwt.sign(
     {
       id: loginUser.id,
@@ -148,4 +150,39 @@ export async function settingsChange(req, res) {
   } else if (change === "name") {
     changeName(req, res);
   }
+}
+
+export async function logout(req, res) {
+  res.clearCookie("token");
+  res.redirect("/welcome");
+}
+
+export async function addGuestUser(req, res) {
+  const newUserStats = await createUserStats();
+  const username = `user${Math.round(Math.random() * 1000000000000)}`;
+
+  const guest = await user.query().insert({
+    email: "guest",
+    password: "guest",
+    lastName: "guest",
+    name: "guest",
+    birthdate: "guest",
+    user_stats_id: newUserStats.id,
+    username: username,
+    is_guest: true,
+  });
+
+  res.clearCookie("token");
+  const token = jwt.sign(
+    {
+      id: guest.id,
+      user_stats_id: newUserStats.id,
+      username: username,
+      email: "guest",
+    },
+    process.env.JWT_SECRET
+  );
+
+  res.cookie("token", token, { httpOnly: true });
+  res.redirect("/home");
 }
