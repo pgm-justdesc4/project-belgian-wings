@@ -78,7 +78,6 @@ Choose plane
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  align-items: center;
 
   & h2 {
     width: 100%;
@@ -91,14 +90,14 @@ Choose plane
     display: flex;
     margin-top: 0.5rem;
     margin-bottom: 2rem;
+    margin: 0.5rem 1rem 2rem 1rem;
     background-color: rgba(72, 72, 72, 0.5);
-    width: 45%;
-    padding: 0.5rem;
+    width: 90%;
+    height: 5rem;
 
     & .plane {
-      width: 15%;
-      background-color: var(--primary-color);
-      padding: 0.6rem;
+      width: 20%;
+      padding: 0.3rem;
     }
   }
 }

@@ -11,8 +11,3 @@
 @import url("./layout/news.css");
 @import url("/assets/css/layout/avatar.css");
 @import url("/assets/css/layout/welcome.css");
-
-body {
-  max-width: 26.875rem;
-  margin: 0 auto;
-}
