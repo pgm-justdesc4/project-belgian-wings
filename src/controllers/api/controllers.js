@@ -81,9 +81,9 @@ export async function minigameFinished(req, res) {
   const initialXp = 1000;
   const growthFactor = 1.2;
 
-  const xpToNextLevel = initialXp * Math.pow(growthFactor, user.level - 1);
+  let xpToNextLevel = initialXp * Math.pow(growthFactor, user.level - 1);
 
-  const totalXp = req.body.xp + user.xp;
+  let totalXp = req.body.xp + user.xp;
   console.log(totalXp);
   let level = parseInt(user.level);
 
@@ -91,7 +91,7 @@ export async function minigameFinished(req, res) {
     level = level + 1;
     totalXp -= xpToNextLevel;
     console.log("level up");
-    const xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+    xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
     if (totalXp >= xpToNextLevel) {
       level = level + 1;
       totalXp -= xpToNextLevel;
