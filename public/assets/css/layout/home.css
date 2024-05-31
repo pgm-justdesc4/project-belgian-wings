@@ -21,3 +21,13 @@
         align-items: center;
     }
 }
+
+.home--footer {
+    border: 1px solid var(--tertiary-color);
+    color: var(--text-color);
+
+    & .home--missions {
+        display: flex;
+        justify-content: space-between;
+    }
+}
