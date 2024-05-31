@@ -80,10 +80,14 @@
       <div id="myOverlay" class="overlay">
           <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">&times;</a>
           <div class="overlay-content">
-            <!-- Add your overlay content here -->
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+            <div class="avatar">
+                <img id="avatar" src alt="Logo Airforce">
+            </div>
+            <div class="user--info">
+                <label for="name">nickname:</label>
+                <input type="hidden" name="change" value="name" />
+                <input type="text" id="firstname" name="name" required />
+            </div>
           </div>
         </div>
 
@@ -94,5 +98,7 @@
     <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
     <script src="../assets/js/globe.js"></script>
+
+    <script src="/assets/js/settings.js"></script>
   </body>
 </html>
