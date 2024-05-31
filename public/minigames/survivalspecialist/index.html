@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/survivalspecialist.css" />
+
+    <title>Minigame: Survival Specialist</title>
+  </head>
+  <body>
+    <main>
+
+        
+
+      <!-- Game area -->
+        <section class="game-area">
+            <!-- Mission select -->
+            <div id="overlay" class="mission-list">
+              <h2>Selecteer een missie om op survival te gaan.</h2>
+              <div id="missionList"></div>
+              <div id="missionCondition"></div>
+              <button id="startButton">Start de missie.</button>
+            </div>
+
+            <!-- Items grid -->
+            <h2>Kies de nodige survival elementen voor deze missie.</h2>
+            <div id="itemsGrid" class="items-grid">
+                <div id="knife">
+                  <img src="/assets/images/minigames/survivalspecialist/items/knife.svg" alt="Knife">
+                </div>
+                <div id="plasters">
+                  <img src="/assets/images/minigames/survivalspecialist/items/plasters.svg" alt="Plasters">
+                </div>
+                <div id="scissorSeam">
+                  <img src="/assets/images/minigames/survivalspecialist/items/scissor-needle.svg" alt="Scissor and Needle">
+                </div>
+                <div id="compass">
+                  <img src="/assets/images/minigames/survivalspecialist/items/compass.svg" alt="Compass">
+                </div>
+                <div id="sleepingbag">
+                  <img src="/assets/images/minigames/survivalspecialist/items/sleepingbag.svg" alt="Sleeping Bag">
+                </div>
+                <div id="flashlight">
+                  <img src="/assets/images/minigames/survivalspecialist/items/flashlight.svg" alt="Flashlight">
+                </div>
+                <div id="rope">
+                  <img src="/assets/images/minigames/survivalspecialist/items/rope.svg" alt="Rope">
+                </div>
+                <div id="medication">
+                  <img src="/assets/images/minigames/survivalspecialist/items/medication.svg" alt="Medication">
+                </div>
+                <div id="lucifers">
+                  <img src="/assets/images/minigames/survivalspecialist/items/lucifers.svg" alt="Lucifers">
+                </div>
+                <div id="sunglasses">
+                  <img src="/assets/images/minigames/survivalspecialist/items/sunglasses.svg" alt="Sunglasses">
+                </div>
+                <div id="waterfilter">
+                  <img src="/assets/images/minigames/survivalspecialist/items/waterfilter.svg" alt="Water Filter">
+                </div>
+                <div id="magnifyinglass">
+                  <img src="/assets/images/minigames/survivalspecialist/items/magnifyingglass.svg" alt="Magnifying Glass">
+                </div>
+            </div>
+
+            <!-- Check item -->
+            <div id="itemChecker" class="item-checker">
+            </div>
+
+            <!-- Correct items -->
+            <div id="correctItems" class="correct-items">
+              <div class="correct-item"></div>
+              <div class="correct-item"></div>
+              <div class="correct-item"></div>
+              <div class="correct-item"></div>
+            </div>
+        </section>
+    </div>
+    </main>
+
+    <script src="/assets/js/minigames/main.js"></script>
+    <script src="/assets/js/minigames/survivalspecialist.js"></script>
+  </body>
+</html>

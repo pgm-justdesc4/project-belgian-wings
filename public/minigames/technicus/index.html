@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/technicus.css" />
+
+    <title>Minigame: Technicus</title>
+  </head>
+  <body>
+    <main>
+      <!-- Timer -->
+      <div class="timer">
+        <p>Timer: <span id="timer">0</span> seconds</p>
+      </div>
+
+      <!-- Choose difficulty -->
+
+      <section class="choose-difficulty">
+        <h2>Kies je moeilijkheidsniveau</h2>
+        <div class="difficulties">
+          <p data-diff="1" class="difficulty">Gemakkelijk</p>
+          <p data-diff="2" class="difficulty">Gemiddeld</p>
+          <p data-diff="3" class="difficulty">Moeilijk</p>
+      </section>
+
+      <!-- Game -->
+      <section class="game">
+        <div class="game-container">
+          <div class="game-grid" id="game-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/minigames/main.js"></script>
+    <script src="/assets/js/minigames/technicus.js"></script>
+  </body>
+</html>

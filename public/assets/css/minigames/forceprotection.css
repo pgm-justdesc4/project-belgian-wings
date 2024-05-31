@@ -1,0 +1,55 @@
+/*
+================================================== 
+STANDARD
+==================================================
+*/
+.game-area {
+  width: 26.875rem;
+  height: 80vh;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.game {
+  width: 100vw;
+  height: 100vh;
+}
+
+/*
+================================================== 
+Game stuff
+==================================================
+*/
+.object,
+.friendly,
+.enemy {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  rotate: 45deg;
+}
+
+.hard {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.friendly {
+  background-color: green;
+}
+
+.enemy {
+  background-color: red;
+  transition: left 1.75s, top 1.75s;
+}
+
+.protected-object {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  background-color: green;
+  left: 50%;
+  top: 50%;
+}

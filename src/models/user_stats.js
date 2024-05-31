@@ -5,6 +5,7 @@ import { Model } from "objection";
 Model.knex(knex);
 
 // import related models
+import badges from "./badges.js";
 
 export default class tasks extends Model {
   static get tableName() {
@@ -26,6 +27,22 @@ export default class tasks extends Model {
         rank: { type: "string" },
         rank_image: { type: "string" },
         avatar: { type: "string" },
+        speedrun: { type: "integer" },
+        wins: { type: "integer" },
+        losses: { type: "integer" },
+      },
+    };
+  }
+
+  static get relationMappings() {
+    return {
+      badges: {
+        relation: Model.HasManyRelation,
+        modelClass: badges,
+        join: {
+          from: "user_stats.id",
+          to: "badges.user_stats_id",
+        },
       },
     };
   }

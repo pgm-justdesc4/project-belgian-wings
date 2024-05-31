@@ -12,7 +12,7 @@ function progress() {
       percent.classList.add("text-blink");
       // text.style.display = "block"; (ERROR)
       clearInterval(loading);
-      window.location.href = "/login";
+      window.location.href = "/welcome";
     } else {
       per = per + 4;
       count = count + 1;

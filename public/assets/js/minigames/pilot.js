@@ -2,29 +2,6 @@ let score = 0; // Initialize score
 let gameInterval; // Declare gameInterval
 let timerInterval; // Declare timerInterval
 
-// Deze code is VERLOPIG, later komt data uit de database
-const gameLocation = "Belgium";
-const locations = [
-  {
-    name: "Belgium",
-    backgroundImage: "",
-  },
-];
-
-/**
- * =================================================================================================
- *  Set game location background
- * =================================================================================================
- */
-
-function setGameLocationBackground(gameLocation) {
-  locations.forEach((location) => {
-    if (location.name === gameLocation) {
-      document.body.style.backgroundImage = `url(${location.backgroundImage})`;
-    }
-  });
-}
-
 /**
  * =================================================================================================
  *  Choose the plane (a better plane is faster, objects will come faster to the player)
@@ -212,9 +189,6 @@ function restartGame() {
  * =================================================================================================
  */
 function startGame() {
-  // Set the game location
-  setGameLocationBackground(gameLocation);
-
   // Change the plane's class to avoid slide issues
   const plane = document.getElementById("plane");
   plane.classList.remove("plane");

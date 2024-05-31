@@ -4,7 +4,14 @@
  * =================================================================================================
  */
 function gameWin(gameInterval, score) {
-  clearInterval(gameInterval);
+  if (gameInterval) clearInterval(gameInterval);
+  fetch("/api/minigameFinished", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ xp: score }),
+  });
   alert("You win! Your score is: " + score);
 }
 
@@ -13,9 +20,32 @@ function gameWin(gameInterval, score) {
  *  GAME OVER
  * =================================================================================================
  */
-function gameOver(gameInterval, restartGame) {
-  clearInterval(gameInterval);
+function gameOver(gameInterval, hasRestart = false, restart) {
+  if (gameInterval) clearInterval(gameInterval);
   alert("Game over!");
 
-  restartGame();
+  if (hasRestart) {
+    restart();
+  } else {
+    restartGame();
+  }
+}
+
+/**
+ * =================================================================================================
+ *  RESTART GAME
+ * =================================================================================================
+ */
+function restartGame() {
+  location.reload();
+}
+
+/**
+ * =================================================================================================
+ *  RESTART GAME
+ * =================================================================================================
+ */
+
+function restartGame() {
+  location.reload();
 }

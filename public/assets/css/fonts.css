@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'AzoSans-Regular';
+    src: url('../fonts/AzoSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: "AzoSans-Light";
+    src: url("../fonts/AzoSans-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AzoSans-Black";
+    src: url("../fonts/AzoSans-Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AzoSans-Black-Italic";
+    src: url("../fonts/AzoSans-BlackItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AzoSans-Bold";
+    src: url("../fonts/AzoSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AzoSans-Bold-Italic";
+    src: url("../fonts/AzoSans-BoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "AzoSans-Italic";
+    src: url("../fonts/AzoSans-Italic.ttf") format("truetype");
+}

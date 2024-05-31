@@ -3,12 +3,13 @@ import dotenv from "dotenv";
 dotenv.config();
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { getUser, getUserStats } from "./controllers/controllers.js";
+import { getUser, getUserStats, getBadges } from "./controllers/controllers.js";
 import {
-  changePassword,
   createUser,
   loginUser,
+  changePassword,
   minigameFinished,
+  settingsChange,
 } from "./controllers/api/controllers.js";
 import authregistervalidation from "./middleware/validation/authregistervalidation.js";
 import authloginvalidation from "./middleware/validation/authloginvalidation.js";
@@ -24,10 +25,12 @@ app.use(cookieParser());
 
 app.get("/user", getUser);
 app.get("/userStats", getUserStats);
+app.get("/badges", getBadges);
 app.post("/api/register", authregistervalidation, createUser);
 app.post("/api/login", authloginvalidation, loginUser);
 app.post("/api/minigameFinished", minigameFinished);
 app.post("/api/resetPassword", passwordvalidation, changePassword);
+app.post("/api/settingsChange", settingsChange);
 
 app.listen(port, () => {
   console.log("example app listening on port", `http://localhost:${port}`);
