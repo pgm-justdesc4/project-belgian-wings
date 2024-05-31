@@ -1,33 +1,36 @@
 .home--header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+  margin-bottom: 8rem;
+
+  & .home--progress {
+    width: 60%;
+    position: relative;
+
+    & #user {
+      color: var(--text-color);
+      position: absolute;
+      left: 70px;
+      top: 50px;
+    }
+  }
+
+  & .home--menu {
     align-items: center;
-    width: 100%;
-    padding: 0 2rem;
-
-    & .home--progress {
-        width: 60%;
-        position: relative;
-
-        & #user {
-            color: var(--text-color);
-            position: absolute;
-            left: 5;
-            right: 4;
-        }
-    }
-
-    & .home--menu {
-        align-items: center;
-    }
+  }
 }
 
 .home--footer {
-    border: 1px solid var(--tertiary-color);
-    color: var(--text-color);
-
-    & .home--missions {
-        display: flex;
-        justify-content: space-between;
-    }
+  border-top: 1px solid var(--tertiary-color);
+  color: var(--text-color);
+  margin-top: 7rem;
+  & .home--missions,
+  h2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
 }
