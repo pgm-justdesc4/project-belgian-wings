@@ -7,6 +7,14 @@
 
     & .home--progress {
         width: 60%;
+        position: relative;
+
+        & #user {
+            color: var(--text-color);
+            position: absolute;
+            left: 5;
+            right: 4;
+        }
     }
 
     & .home--menu {
