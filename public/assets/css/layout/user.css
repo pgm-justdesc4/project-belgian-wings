@@ -1,0 +1,58 @@
+body {
+  /* background-image: url("../images/Earth_background.png"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'AzoSans', sans-serif;
+}
+
+.user {
+  font-family: "AzoSans-Black", sans-serif;
+  display: flex;
+  flex-direction: column;
+
+  & h1,
+  p {
+    margin: 2rem auto;
+    color: white;
+    font-weight: bold;
+  }
+
+  & a {
+    margin: 2rem auto;
+    color: gray;
+    text-decoration: underline;
+    text-decoration-color: white;
+  }
+
+  & button {
+    background-color: hsl(33.9, 100%, 56.27%);
+    margin: 1rem auto;
+    padding: 0.5rem 4rem;
+    color: white;
+
+    &:hover {
+      background-color: hsl(33.9, 80%, 56.27%);
+      color: white;
+    }
+  }
+
+  & .user--svg {
+    width: 50%;
+    margin: 4rem auto;
+  }
+
+  & .user--info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 80%;
+  }
+
+  & .user--settings {
+    margin-top: 8rem;
+    flex-direction: column;
+    color: white;
+    width: 80%;
+  }
+}
