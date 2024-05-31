@@ -52,7 +52,7 @@ document.querySelectorAll(".planes .plane").forEach((planeElement) => {
  */
 function objectsComeToPlayer() {
   const objects = document.getElementById("objects");
-  const object = document.createElement("div");
+  const object = document.createElement("svg");
   const gameArea = document.querySelector(".game");
   const gameAreaRect = gameArea.getBoundingClientRect();
 
