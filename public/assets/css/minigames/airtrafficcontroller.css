@@ -1,4 +1,9 @@
-/* styles.css */
+/*
+================================================== 
+GAME AREA
+==================================================
+*/
+
 .game-area {
   width: 26.875rem;
   height: 86vh;
@@ -14,6 +19,12 @@
   margin: 5% auto;
 }
 
+/*
+================================================== 
+CIRCLE
+==================================================
+*/
+
 .circle {
   position: absolute;
   width: 120%;
@@ -26,6 +37,12 @@
   overflow: hidden;
 }
 
+/*
+================================================== 
+AIRPLANES
+==================================================
+*/
+
 .airplane {
   position: absolute;
   width: 30px;
@@ -34,6 +51,18 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.airplane::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/minigames/airtrafficcontroller/plane.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .green {

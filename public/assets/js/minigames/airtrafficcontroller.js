@@ -1,15 +1,19 @@
 let gameInterval;
 let timerInterval;
 let score = 0;
-let timer = 30;
+let timer = 0;
 
 const gameArea = document.getElementById("gameArea");
 const circle = document.getElementById("circle");
 
 const airplaneSize = 30;
-const circleRadius = circle.offsetWidth / 2;
 
-// Initialize airplanes in the circle
+/**
+ * =================================================================================================
+ *  Initialize airplanes
+ * =================================================================================================
+ */
+
 function initializeAirplanes() {
   const airplanes = [];
 
@@ -49,12 +53,20 @@ function initializeAirplanes() {
       airplane.classList.add(Math.random() > 0.5 ? "green" : "red");
       airplane.style.left = `${x}px`;
       airplane.style.top = `${y}px`;
+      airplane.style.transform = `rotate(${angle + Math.PI / 2}rad)`; // Adjust rotation
       airplane.setAttribute("data-angle", angle.toString());
       gameArea.appendChild(airplane);
     }
   }
 }
 
+/**
+ * =================================================================================================
+ *  Move airplanes within the game area
+ * =================================================================================================
+ */
+
+// Move airplanes
 function moveAirplanes() {
   const airplanes = document.querySelectorAll(".airplane");
 
@@ -85,7 +97,7 @@ function moveAirplanes() {
           (airplane.classList.contains("green") &&
             otherAirplane.classList.contains("red"))
         ) {
-          gameOver(gameInterval);
+          gameWin(gameInterval, score);
           collisionDetected = true;
         }
       }
@@ -95,12 +107,19 @@ function moveAirplanes() {
       airplane.setAttribute("data-angle", angle.toString());
       airplane.style.left = `${newX}px`;
       airplane.style.top = `${newY}px`;
+      airplane.style.transform = `rotate(${angle + Math.PI / 2}rad)`;
     } else {
-      angle += Math.PI; // Change direction by 180 degrees
+      angle += Math.PI;
       airplane.setAttribute("data-angle", angle.toString());
     }
   });
 }
+
+/**
+ * =================================================================================================
+ *  Check for collisions between airplanes
+ * =================================================================================================
+ */
 
 function checkCollisions(newAirplane, airplanes) {
   for (let i = 0; i < airplanes.length; i++) {
@@ -115,6 +134,12 @@ function checkCollisions(newAirplane, airplanes) {
 
   return false;
 }
+
+/**
+ * =================================================================================================
+ *  Handle click events on airplanes
+ * =================================================================================================
+ */
 
 function handleClick(event) {
   const x = event.clientX;
@@ -133,16 +158,27 @@ function handleClick(event) {
         let angle = parseFloat(airplane.getAttribute("data-angle"));
         angle += Math.PI / 2; // Rotate 90 degrees
         airplane.setAttribute("data-angle", angle.toString());
-        airplane.style.transform = `rotate(${angle * (180 / Math.PI)}deg)`; // Add this line
+        airplane.style.transform = `rotate(${angle + Math.PI / 2}rad)`;
       }
     }
   });
 }
 
+/**
+ * =================================================================================================
+ *  Update timer
+ * =================================================================================================
+ */
 function updateTimer() {
   const timerElement = document.getElementById("timer");
   timerElement.textContent = timer;
 }
+
+/**
+ * =================================================================================================
+ *  Start the game
+ * =================================================================================================
+ */
 
 function startGame() {
   initializeAirplanes();
@@ -151,31 +187,31 @@ function startGame() {
     moveAirplanes();
   }, 75);
 
+  // Increment timer every second
   timerInterval = setInterval(() => {
-    timer -= 1;
+    timer++;
     updateTimer();
-    if (timer <= 0) {
-      clearInterval(timerInterval);
-      gameWin(gameInterval, score);
-    }
   }, 1000);
 
-  // Spawn more airplanes at random times
+  // Increment score every second
+  const scoreInterval = setInterval(() => {
+    score += 2;
+  }, 1000);
+
+  // Spawn more airplanes every 15 seconds
   const spawnAirplanes = () => {
-    const delay = Math.random() * 10000; // Random delay between 0 and 5000 milliseconds
+    const delay = 15000; // 15 seconds
     setTimeout(() => {
-      if (document.querySelectorAll(".airplane").length < 10) {
-        // Stop spawning after 20 airplanes
-        initializeAirplanes();
-        spawnAirplanes(); // Schedule the next spawn
-      }
+      initializeAirplanes();
+      spawnAirplanes();
     }, delay);
   };
-  spawnAirplanes(); // Start spawning
+  spawnAirplanes();
 
   gameArea.addEventListener("click", handleClick);
 }
 
+// Start the game on page load
 window.onload = () => {
   updateTimer();
   startGame();
