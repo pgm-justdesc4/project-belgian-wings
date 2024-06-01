@@ -1,0 +1,74 @@
+/*
+================================================== 
+GAME AREA
+==================================================
+*/
+
+.game-area {
+  width: 26.875rem;
+  height: 86vh;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.game-area__container {
+  width: 90%;
+  height: 80%;
+  margin: 5% auto;
+}
+
+/*
+================================================== 
+CIRCLE
+==================================================
+*/
+
+.circle {
+  position: absolute;
+  width: 120%;
+  height: 90%;
+  border: 3px solid #000;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+/*
+================================================== 
+AIRPLANES
+==================================================
+*/
+
+.airplane {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.airplane::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/minigames/airtrafficcontroller/plane.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}

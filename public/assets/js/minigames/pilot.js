@@ -1,6 +1,6 @@
-let score = 0; // Initialize score
-let gameInterval; // Declare gameInterval
-let timerInterval; // Declare timerInterval
+let score = 0;
+let gameInterval;
+let timerInterval;
 
 /**
  * =================================================================================================
@@ -166,7 +166,7 @@ function checkCollision() {
       planeRect.top < objectRect.bottom &&
       planeRect.bottom > objectRect.top
     ) {
-      gameWin(gameInterval, score); // Win the game when a collision occurs
+      gameWin(gameInterval, score);
     }
   });
 }

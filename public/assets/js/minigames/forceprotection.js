@@ -63,9 +63,9 @@ function moveFriendlyForces() {
   const friendlies = document.querySelectorAll(".friendly");
   const protectedObject = document.getElementById("protectedObject");
   const rect = protectedObject.getBoundingClientRect();
-  const gameAreaRect = gameArea.getBoundingClientRect(); // Get game area position
-  const centerX = rect.left + rect.width / 2 - gameAreaRect.left; // Subtract game area position
-  const centerY = rect.top + rect.height / 2 - gameAreaRect.top; // Subtract game area position
+  const gameAreaRect = gameArea.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2 - gameAreaRect.left;
+  const centerY = rect.top + rect.height / 2 - gameAreaRect.top;
 
   timeStep += 0.01;
 
@@ -150,16 +150,16 @@ function moveEnemies() {
   const enemies = document.querySelectorAll(".enemy");
   const protectedObject = document.getElementById("protectedObject");
   const protectedRect = protectedObject.getBoundingClientRect();
-  const gameAreaRect = gameArea.getBoundingClientRect(); // Get game area position
+  const gameAreaRect = gameArea.getBoundingClientRect();
   const centerX =
-    protectedRect.left + protectedRect.width / 2 - gameAreaRect.left; // Subtract game area position
+    protectedRect.left + protectedRect.width / 2 - gameAreaRect.left;
   const centerY =
-    protectedRect.top + protectedRect.height / 2 - gameAreaRect.top; // Subtract game area position
+    protectedRect.top + protectedRect.height / 2 - gameAreaRect.top;
 
   enemies.forEach((enemy) => {
     const enemyRect = enemy.getBoundingClientRect();
-    const enemyX = enemyRect.left + enemyRect.width / 2 - gameAreaRect.left; // Subtract game area position
-    const enemyY = enemyRect.top + enemyRect.height / 2 - gameAreaRect.top; // Subtract game area position
+    const enemyX = enemyRect.left + enemyRect.width / 2 - gameAreaRect.left;
+    const enemyY = enemyRect.top + enemyRect.height / 2 - gameAreaRect.top;
 
     const phase = enemy.getAttribute("data-phase");
 
