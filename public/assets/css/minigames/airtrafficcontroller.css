@@ -1,0 +1,45 @@
+/* styles.css */
+.game-area {
+  width: 26.875rem;
+  height: 86vh;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.game-area__container {
+  width: 90%;
+  height: 80%;
+  margin: 5% auto;
+}
+
+.circle {
+  position: absolute;
+  width: 120%;
+  height: 90%;
+  border: 3px solid #000;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.airplane {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
