@@ -105,7 +105,7 @@ export async function minigameFinished(req, res) {
   await userStats
     .query()
     .findOne({ id: user.id })
-    .patch({ level: level, xp: totalXp });
+    .patch({ level: level, xp: Math.round(totalXp) });
   console.log("xp updated");
   res.json({
     status: "success",
