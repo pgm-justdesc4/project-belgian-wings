@@ -14,6 +14,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
   }
   & .pilot__container::before {
     content: "";

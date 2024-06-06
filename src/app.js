@@ -10,6 +10,8 @@ import {
   changePassword,
   minigameFinished,
   settingsChange,
+  logout,
+  addGuestUser,
 } from "./controllers/api/controllers.js";
 import authregistervalidation from "./middleware/validation/authregistervalidation.js";
 import authloginvalidation from "./middleware/validation/authloginvalidation.js";
@@ -28,6 +30,8 @@ app.get("/userStats", getUserStats);
 app.get("/badges", getBadges);
 app.post("/api/register", authregistervalidation, createUser);
 app.post("/api/login", authloginvalidation, loginUser);
+app.post("/api/logout", logout);
+app.post("/api/addGuest", addGuestUser);
 app.post("/api/minigameFinished", minigameFinished);
 app.post("/api/resetPassword", passwordvalidation, changePassword);
 app.post("/api/settingsChange", settingsChange);

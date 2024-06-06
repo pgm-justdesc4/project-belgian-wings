@@ -4,6 +4,7 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 const chart = am4core.create("chartdiv", am4maps.MapChart);
 chart.logo.disabled = true;
+chart.maxZoomLevel = 1;
 
 // Set map definition
 chart.geodata = am4geodata_worldLow;
@@ -51,8 +52,8 @@ clickableCountriesTemplate.tooltipText = "{id}";
 clickableCountriesTemplate.adapter.add("tooltipText", function (text, target) {
   return missions[target.dataItem.dataContext.id]; // Return the mission for the country id
 });
-clickableCountriesTemplate.fill = am4core.color("#FF6633"); // Set a different color for clickable countries
-clickableCountriesTemplate.stroke = am4core.color("#000033");
+clickableCountriesTemplate.fill = am4core.color("#FF9E20"); // Set a different color for clickable countries
+clickableCountriesTemplate.stroke = am4core.color("");
 clickableCountriesTemplate.strokeWidth = 0.5;
 clickableCountriesTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 

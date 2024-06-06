@@ -1,6 +1,6 @@
-let score = 0; // Initialize score
-let gameInterval; // Declare gameInterval
-let timerInterval; // Declare timerInterval
+let score = 0;
+let gameInterval;
+let timerInterval;
 
 /**
  * =================================================================================================
@@ -12,26 +12,31 @@ const planes = [
     id: "normal-plane",
     speed: "1s",
     image: "/assets/images/minigames/pilot/planes/normal-plane.svg",
+    scoreIncrement: 10,
   },
   {
     id: "medium-plane",
     speed: "0.8s",
     image: "/assets/images/minigames/pilot/planes/medium-plane.svg",
+    scoreIncrement: 15,
   },
   {
     id: "hard-plane",
     speed: "0.6s",
     image: "/assets/images/minigames/pilot/planes/hard-plane.svg",
+    scoreIncrement: 20,
   },
 ];
+
+let selectedPlaneScoreIncrement;
 
 function choosePlane(planeId) {
   let selectedPlane = planes.find((plane) => plane.id === planeId);
   if (selectedPlane) {
     selectedPlaneSpeed = selectedPlane.speed;
     selectedPlaneSpeedInMs = parseFloat(selectedPlane.speed) * 1000;
-    document.getElementById("plane").querySelector("img").src =
-      selectedPlane.image;
+    selectedPlaneScoreIncrement = selectedPlane.scoreIncrement;
+    document.querySelector("#plane img").src = selectedPlane.image;
 
     document.querySelector(".choose-plane").style.display = "none";
     startGame();
@@ -79,15 +84,15 @@ function objectsComeToPlayer() {
 function movePlane() {
   let mouseDown = false;
   let startX;
+  let startLeft;
 
   // Get the plane and game area elements
   const plane = document.getElementById("plane");
   const gameArea = document.querySelector(".game");
 
-  // Add event listeners
+  // Event listeners for mouse
   let planeRect;
 
-  //event listeners for mouse
   window.addEventListener("mousedown", function (e) {
     mouseDown = true;
     planeRect = plane.getBoundingClientRect();
@@ -114,19 +119,26 @@ function movePlane() {
     mouseDown = false;
   });
 
-  //event listeners for touch
-
-  window.addEventListener("touchstart", function (e) {
+  // Event listeners for mobile touch
+  plane.addEventListener("touchstart", function (e) {
     mouseDown = true;
-    planeRect = plane.getBoundingClientRect();
-    startX = e.clientX - planeRect.left;
+    const planeRect = plane.getBoundingClientRect();
+    const gameAreaRect = gameArea.getBoundingClientRect();
+    startX = e.touches[0].clientX;
+    startLeft = planeRect.left - gameAreaRect.left;
   });
 
-  window.addEventListener("touchmove", function (e) {
+  gameArea.addEventListener("touchmove", function (e) {
     if (!mouseDown) return;
     e.preventDefault();
-    let planeRect = plane.getBoundingClientRect();
-    let x = e.touches[0].clientX - planeRect.width / 2; // change this line
+    const gameAreaRect = gameArea.getBoundingClientRect();
+    let x = e.touches[0].clientX - startX + startLeft;
+
+    if (x < 0) {
+      x = 0;
+    } else if (x + plane.offsetWidth > gameAreaRect.width) {
+      x = gameAreaRect.width - plane.offsetWidth;
+    }
 
     plane.style.left = x + "px";
   });
@@ -142,7 +154,6 @@ function movePlane() {
  * =================================================================================================
  */
 
-// Check if the player has hit an object
 function checkCollision() {
   const plane = document.getElementById("plane");
   const planeRect = plane.getBoundingClientRect();
@@ -155,32 +166,9 @@ function checkCollision() {
       planeRect.top < objectRect.bottom &&
       planeRect.bottom > objectRect.top
     ) {
-      gameOver(gameInterval, restartGame);
+      gameWin(gameInterval, score);
     }
   });
-}
-
-/**
- * =================================================================================================
- *  RESTART THE GAME
- * =================================================================================================
- */
-function restartGame() {
-  score = 0;
-
-  const objects = document.getElementById("objects");
-  while (objects.firstChild) {
-    objects.removeChild(objects.firstChild);
-  }
-
-  const plane = document.getElementById("plane");
-  plane.style.left = "50%";
-
-  const timerElement = document.getElementById("timer");
-  timerElement.textContent = "0";
-  clearInterval(timerInterval);
-
-  document.querySelector(".choose-plane").style.display = "block";
 }
 
 /**
@@ -188,11 +176,17 @@ function restartGame() {
  *  START THE GAME
  * =================================================================================================
  */
+
 function startGame() {
   // Change the plane's class to avoid slide issues
   const plane = document.getElementById("plane");
   plane.classList.remove("plane");
   plane.classList.add("plane-game");
+
+  // Set the plane initial position in center
+  const gameArea = document.querySelector(".game");
+  const gameAreaRect = gameArea.getBoundingClientRect();
+  plane.style.left = gameAreaRect.width / 2 - plane.offsetWidth / 2 + "px";
 
   // Let the objects fall within the gaming time
   gameInterval = setInterval(function () {
@@ -203,16 +197,16 @@ function startGame() {
   // Let the plane move
   movePlane();
 
-  // Make the timer work + add score per second
+  // Increase score per second
+  setInterval(function () {
+    score += selectedPlaneScoreIncrement;
+  }, 1000);
+
+  // Start the timer
   let timerValue = 0;
   const timerElement = document.getElementById("timer");
   timerInterval = setInterval(function () {
     timerValue++;
-    score += 15;
     timerElement.textContent = timerValue;
-    if (timerValue >= 30) {
-      clearInterval(timerInterval);
-      gameWin(gameInterval, score);
-    }
   }, 1000);
 }
