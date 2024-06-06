@@ -84,7 +84,7 @@
                 <img id="avatar" src alt="Logo Airforce">
             </div>
             <div class="user--info">
-                <label for="name">nickname:</label>
+                <label for="name"></label>
                 <input type="hidden" name="change" value="name" />
                 <input type="text" id="firstname" name="name" required />
             </div>
@@ -97,20 +97,31 @@
                 <path d="M271 15.5L286.5 0H293L277.5 15.5H271Z" fill="#FF9E20"/>
                 </svg>
             </div>
-            <div>
+            <div class="overlay-links">
                 <ul>
                   <li>
-                    <img src="../assets/images/settings.svg" alt="Instellingen"><p>Instellingen</p>
+                    <a href="/settings">
+                      <img src="../assets/images/settings.png" alt="Instellingen">
+                      <p>Instellingen</p>
+                    </a>
                   </li>
                   
                   <li>
-                    <img src="../assets/images/achievements.png" alt="Instellingen"><p>Prestaties</p>
+                    <a href="/achievements">
+                      <img src="../assets/images/achievements.png" alt="Achievements">
+                      <p>Prestaties</p>
+                    </a>
                   </li>
-
                   <li>
-                    <img src="../assets/images/globe.png" alt="Instellingen"><p>Nieuws</p>
+                    <a href="/news">
+                      <img src="../assets/images/globe.png" alt="Instellingen">
+                      <p>Nieuws</p>
+                    </a>
                   </li>
                 <ul>
+            </div>
+            <div>
+            <p>Behaalde badges</p>
             </div>
           </div>
         </div>

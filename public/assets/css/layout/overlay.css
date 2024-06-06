@@ -22,10 +22,36 @@
 
   
   /* Style the close button (top right corner) */
+
   .overlay .closebtn {
     position: absolute;
     top: 20px;
     right: 45px;
     font-size: 60px;
     color:red;
+  }
+
+  .overlay-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+     & ul {
+        display:flex;
+        margin: 0 auto;
+
+        & li, svg {
+            color:white;
+            padding: 1rem;
+            list-style-type: none;
+
+            & a {
+                color:white;
+                text-decoration: none;
+                
+            }
+        }
+
+     }
   }
