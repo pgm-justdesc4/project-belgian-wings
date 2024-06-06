@@ -4,14 +4,22 @@ STANDARD
 ==================================================
 */
 
-.technicus{
+.technicus::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("/assets/images/minigames/technicus/212290_CHRISTIAN\ DECLOEDT.jpg");
   background-size: cover;
   background-position: center;
+  filter: blur(6px);
+  z-index: -1;
 }
 
 .game {
-  width: 26.875rem;
+  width: 25rem;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -37,6 +45,8 @@ background-color: transparent;
   transform: translate(-50%, -50%);
   width: 80%;
   color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
 
   & .difficulties {
     display: flex;
@@ -74,6 +84,7 @@ game
     justify-content: center;
     align-items: center;
     height: 100%;
+    transform: rotate(45deg);
 
     & .easy {
       display: grid;
@@ -81,7 +92,7 @@ game
       grid-template-rows: repeat(4, 1fr);
       width: 300px;
       height: 300px;
-      border: 1px solid black;
+      border: 3px solid white;
 
       & .game-grid-child {
         display: flex;
@@ -89,7 +100,7 @@ game
         align-items: center;
         font-size: 1.5rem;
         cursor: pointer;
-        border: 1px solid black;
+        border: 1px solid white;
 
         & div {
           height: 70%;
@@ -139,15 +150,15 @@ game
       grid-template-columns: repeat(6, 1fr);
       grid-template-rows: repeat(5, 1fr);
       width: 300px;
-      height: 300px;
-      border: 1px solid black;
+      aspect-ratio: 1/1;
+      border: 3px solid white;
       & .game-grid-child {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.5rem;
         cursor: pointer;
-        border: 1px solid black;
+        border: 1px solid white;
 
         & div {
           height: 70%;
@@ -212,14 +223,14 @@ game
       grid-template-rows: repeat(8, 1fr);
       width: 300px;
       height: 300px;
-      border: 1px solid black;
+      border: 3px solid white;
       & .game-grid-child {
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.5rem;
         cursor: pointer;
-        border: 1px solid black;
+        border: 1px solid white;
 
         & div {
           height: 70%;
