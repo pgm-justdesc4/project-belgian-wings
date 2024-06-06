@@ -88,16 +88,14 @@ export async function minigameFinished(req, res) {
   let totalXp = req.body.xp + user.xp;
   console.log(totalXp);
   let level = parseInt(user.level);
-
-  if (totalXp >= xpToNextLevel) {
-    level = level + 1;
-    totalXp -= xpToNextLevel;
-    console.log("level up");
-    xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+  recursiveLevelUp(totalXp, xpToNextLevel, level);
+  function recursiveLevelUp(totalXp, xpToNextLevel, level) {
     if (totalXp >= xpToNextLevel) {
       level = level + 1;
       totalXp -= xpToNextLevel;
       console.log("level up");
+      xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+      recursiveLevelUp(totalXp, xpToNextLevel, level);
     }
   }
 
