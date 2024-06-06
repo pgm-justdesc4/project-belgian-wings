@@ -48,6 +48,17 @@ function eventListener(timer, difficulty) {
   let finishedColors = [];
   let lastClicked = null;
   let isLastClickedCorrect = false;
+  function switchColor(activeColor) {
+    if (activeColor !== "") {
+      document.querySelectorAll(".game-grid-child").forEach((child) => {
+        if (child.children.length) {
+          if (child.children[0].classList.contains(`mini-${activeColor}`)) {
+            child.children[0].remove();
+          }
+        }
+      });
+    }
+  }
   gameGrid.addEventListener("click", (e) => {
     if (
       !e.target.classList.contains(activeColor) &&
@@ -58,6 +69,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("red") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "red";
         startingColorId = e.target.id;
       } else if (
@@ -65,6 +77,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("blue") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "blue";
         startingColorId = e.target.id;
       } else if (
@@ -72,6 +85,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("green") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "green";
         startingColorId = e.target.id;
       } else if (
@@ -79,6 +93,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("yellow") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "yellow";
         startingColorId = e.target.id;
       } else if (
@@ -86,6 +101,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("purple") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "purple";
         startingColorId = e.target.id;
       } else if (
@@ -93,6 +109,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("orange") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "orange";
         startingColorId = e.target.id;
       } else if (
@@ -100,6 +117,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("brown") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "brown";
         startingColorId = e.target.id;
       } else if (
@@ -107,6 +125,7 @@ function eventListener(timer, difficulty) {
         !finishedColors.includes("pink") &&
         e.target.id !== startingColorId
       ) {
+        switchColor(activeColor);
         activeColor = "pink";
         startingColorId = e.target.id;
       }
@@ -198,6 +217,7 @@ function eventListener(timer, difficulty) {
         ) {
           finishedColors.push(activeColor);
           console.log("finished a color");
+          activeColor = "";
         }
       }
     } else {
