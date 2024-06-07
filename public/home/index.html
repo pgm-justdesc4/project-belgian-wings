@@ -22,7 +22,7 @@
     <div class="home--header">
       <!--User info-->
       <div class="home--progress">
-        <p id="user">Kees</p>
+        <p id="user">Gust</p>
         <svg width="403" height="124" viewBox="0 0 403 124" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="75" y1="87" x2="403" y2="87" stroke="#021320" stroke-width="10"/>
           <line x1="73" y1="87" x2="274" y2="87" stroke="#FF9E20" stroke-width="10"/>
@@ -32,7 +32,7 @@
         </svg>
       </div>
 
-      <div class="home--menu">
+      <div class="home--menu" onclick="openOverlay()">
         <svg width="25" height="25" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="1.5" y="57.5" width="56" height="56" transform="rotate(-90 1.5 57.5)" stroke="white" stroke-width="3"/>
           <rect x="10" y="47" width="37" height="38" transform="rotate(-90 10 47)" fill="white"/>
@@ -76,12 +76,64 @@
         </svg>
         </div>
       </section>
+
+      <div id="myOverlay" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">&times;</a>
+          <div class="overlay-content">
+            <div class="avatar">
+                <img id="avatar" src alt="Logo Airforce">
+            </div>
+            <div class="user--info">
+                <label for="name"></label>
+                <input type="hidden" name="change" value="name" />
+                <input type="text" id="firstname" name="name" required />
+            </div>
+            <div>
+                <svg width="340" height="16" viewBox="0 0 340 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 0L0 15.5H324.5L340 0H15.5Z" fill="#888A8D"/>
+                <path d="M15.5 0L0 15.5H203L218.5 0H15.5Z" fill="#FF9E20"/>
+                <path d="M210.5 15.5L226 0H250L234.5 15.5H210.5Z" fill="#FF9E20"/>
+                <path d="M241 15.5L256.5 0H280.5L265 15.5H241Z" fill="#FF9E20"/>
+                <path d="M271 15.5L286.5 0H293L277.5 15.5H271Z" fill="#FF9E20"/>
+                </svg>
+            </div>
+            <div class="overlay-links">
+                <ul>
+                  <li>
+                    <a href="/settings">
+                      <img src="../assets/images/settings.png" alt="Instellingen">
+                      <p>Instellingen</p>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/achievements">
+                      <img src="../assets/images/achievements.png" alt="Achievements">
+                      <p>Prestaties</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/news">
+                      <img src="../assets/images/globe.png" alt="Instellingen">
+                      <p>Nieuws</p>
+                    </a>
+                  </li>
+                <ul>
+            </div>
+            <div>
+            <p>Behaalde badges</p>
+            </div>
+          </div>
+        </div>
+
     </main>
 
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
     <script src="https://www.amcharts.com/lib/4/maps.js"></script>
     <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <script src="/assets/js/settings.js"></script>
     <script src="/assets/js/globe.js"></script>
   </body>
 </html>
