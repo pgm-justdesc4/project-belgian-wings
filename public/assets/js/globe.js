@@ -4,6 +4,7 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 const chart = am4core.create("chartdiv", am4maps.MapChart);
 chart.logo.disabled = true;
+chart.maxZoomLevel = 1;
 
 // Set map definition
 chart.geodata = am4geodata_worldLow;

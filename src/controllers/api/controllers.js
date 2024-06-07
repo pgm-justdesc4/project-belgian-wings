@@ -60,6 +60,8 @@ export async function loginUser(req, res) {
       message: "Password is incorrect",
     });
   }
+
+  res.clearCookie("token");
   const token = jwt.sign(
     {
       id: loginUser.id,
@@ -84,26 +86,25 @@ export async function minigameFinished(req, res) {
   let xpToNextLevel = initialXp * Math.pow(growthFactor, user.level - 1);
 
   let totalXp = req.body.xp + user.xp;
-  console.log(totalXp);
   let level = parseInt(user.level);
 
-  if (totalXp >= xpToNextLevel) {
-    level = level + 1;
-    totalXp -= xpToNextLevel;
-    console.log("level up");
-    xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+  ({ level, totalXp } = recursiveLevelUp(totalXp, xpToNextLevel, level));
+
+  function recursiveLevelUp(totalXp, xpToNextLevel, level) {
     if (totalXp >= xpToNextLevel) {
-      level = level + 1;
+      level++;
       totalXp -= xpToNextLevel;
       console.log("level up");
+      xpToNextLevel = initialXp * Math.pow(growthFactor, level - 1);
+      recursiveLevelUp(totalXp, xpToNextLevel, level);
     }
+    return { level, totalXp };
   }
 
-  console.log(level, totalXp);
   await userStats
     .query()
     .findOne({ id: user.id })
-    .patch({ level: level, xp: totalXp });
+    .patch({ level: level, xp: Math.round(totalXp) });
   console.log("xp updated");
   res.json({
     status: "success",
@@ -148,4 +149,39 @@ export async function settingsChange(req, res) {
   } else if (change === "name") {
     changeName(req, res);
   }
+}
+
+export async function logout(req, res) {
+  res.clearCookie("token");
+  res.redirect("/welcome");
+}
+
+export async function addGuestUser(req, res) {
+  const newUserStats = await createUserStats();
+  const username = `user${Math.round(Math.random() * 1000000000000)}`;
+
+  const guest = await user.query().insert({
+    email: "guest",
+    password: "guest",
+    lastName: "guest",
+    name: "guest",
+    birthdate: "guest",
+    user_stats_id: newUserStats.id,
+    username: username,
+    is_guest: true,
+  });
+
+  res.clearCookie("token");
+  const token = jwt.sign(
+    {
+      id: guest.id,
+      user_stats_id: newUserStats.id,
+      username: username,
+      email: "guest",
+    },
+    process.env.JWT_SECRET
+  );
+
+  res.cookie("token", token, { httpOnly: true });
+  res.redirect("/home");
 }

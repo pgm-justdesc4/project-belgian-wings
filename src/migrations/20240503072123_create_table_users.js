@@ -11,6 +11,8 @@ export function up(knex) {
     table.string("lastName").notNullable();
     table.string("email").notNullable();
     table.string("password").notNullable();
+    table.boolean("is_guest").notNullable().defaultTo(false);
+    table.timestamp("created_at").defaultTo(knex.fn.now());
   });
 }
 
