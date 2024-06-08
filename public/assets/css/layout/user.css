@@ -2,7 +2,7 @@ body {
   /* background-image: url("../images/Earth_background.png"); */
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'AzoSans', sans-serif;
+  font-family: "AzoSans", sans-serif;
 }
 
 .user {
@@ -28,6 +28,7 @@ body {
     background-color: hsl(33.9, 100%, 56.27%);
     margin: 1rem auto;
     padding: 0.5rem 4rem;
+    cursor: pointer;
     color: white;
 
     &:hover {
