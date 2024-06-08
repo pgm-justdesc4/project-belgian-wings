@@ -23,7 +23,6 @@
           <rect x="15" y="61.1879" width="65" height="65.8829" transform="rotate(-45 15 61.1879)" fill="#FF9E20" />
           <rect x="15" y="61.1879" width="65" height="65.8829" transform="rotate(-45 15 61.1879)" fill="#FF9E20" />
         </svg>
-        <span id="level">1</span>
       </div>
 
       <div class="home--menu" onclick="openOverlay()">
@@ -97,7 +96,61 @@
     </section>
 
     <div id="myOverlay" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">&times;</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">
+        <svg
+        width="24"
+        height="25"
+        viewBox="0 0 24 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.686287"
+          y1="1.8934"
+          x2="6.34314"
+          y2="7.55026"
+          stroke="white"
+        />
+        <line
+          x1="16.9497"
+          y1="18.1569"
+          x2="22.6066"
+          y2="23.8137"
+          stroke="white"
+        />
+        <line
+          x1="0.686295"
+          y1="23.8137"
+          x2="6.34315"
+          y2="18.1569"
+          stroke="white"
+        />
+        <line
+          x1="17.6569"
+          y1="6.84315"
+          x2="23.3137"
+          y2="1.18629"
+          stroke="white"
+        />
+        <rect
+          x="11.6464"
+          y="18.9481"
+          width="9.1657"
+          height="9.1657"
+          transform="rotate(-135 11.6464 18.9481)"
+          fill="white"
+        />
+        <rect
+          x="11.6464"
+          y="22.6393"
+          width="14.4309"
+          height="14.4309"
+          transform="rotate(-135 11.6464 22.6393)"
+          stroke="#FF9E20"
+          stroke-width="2"
+        />
+      </svg>
+      </a>
       <div class="overlay-content">
         <div class="avatar">
           <img id="avatar" src alt="Logo Airforce">
@@ -105,14 +158,14 @@
         <div class="user--info">
           <p id="userOverlay">user</p>
         </div>
-        <div>
-          <svg width="340" height="16" viewBox="0 0 340 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.5 0L0 15.5H324.5L340 0H15.5Z" fill="#888A8D" />
-            <path d="M15.5 0L0 15.5H203L218.5 0H15.5Z" fill="#FF9E20" />
-            <path d="M210.5 15.5L226 0H250L234.5 15.5H210.5Z" fill="#FF9E20" />
-            <path d="M241 15.5L256.5 0H280.5L265 15.5H241Z" fill="#FF9E20" />
-            <path d="M271 15.5L286.5 0H293L277.5 15.5H271Z" fill="#FF9E20" />
-          </svg>
+        <div class="user-stats">
+          <div class="user-stats__rank">
+            <p id="rank" class="rank">Recruit</p>
+          </div>
+          <div class="user-stats__level">
+          <p>Level -</p>
+          <p id="level" class="level">1</p>
+        </div>
         </div>
         <div class="overlay-links">
           <ul>
@@ -136,9 +189,6 @@
               </a>
             </li>
             <ul>
-        </div>
-        <div>
-          <p>Behaalde badges</p>
         </div>
       </div>
     </div>

@@ -37,17 +37,6 @@
   }
 }
 
-.home--progress .rect {
-  position: relative;
-}
-
-.home--progress span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .home--missions a {
   position: relative;
   text-decoration: none;

@@ -1,14 +1,17 @@
 .overlay {
   height: 100%;
+  max-width: 26.875rem;
   width: 0;
+  color: white;
   position: fixed;
   z-index: 1;
-  right: 0;
+  right: 50%;
+  transform: translateX(50%);
   top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsla(216, 87%, 9%, 0.889);
   backdrop-filter: blur(10px);
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
 
   & .overlay-content {
     position: relative;
@@ -19,14 +22,33 @@
   }
 }
 
-/* Style the close button (top right corner) */
-
 .overlay .closebtn {
   position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-  color: red;
+  top: 3rem;
+  right: 30px;
+}
+
+.user--info p {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.user-stats__rank .rank {
+  text-transform: capitalize;
+}
+
+.user-stats__level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: rgb(255, 158, 32);
+}
+
+.user-stats__level .level {
+  font-size: 2rem;
 }
 
 .overlay-links {
@@ -40,9 +62,11 @@
     margin: 0 auto;
 
     & li,
-    svg {
+    img {
       color: white;
+      margin: 0 auto;
       padding: 1rem;
+      padding-bottom: 0.5rem;
       list-style-type: none;
 
       & a {

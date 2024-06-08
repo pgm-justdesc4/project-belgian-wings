@@ -1,12 +1,14 @@
 function init() {
-  activeAvatar();
+  activeUser();
 }
 
-async function activeAvatar() {
+async function activeUser() {
   let userStats = await fetch("/userStats");
   userStats = await userStats.json();
   // console.log(userStats);
   document.getElementById("avatar").src = `/assets/images/${userStats.avatar}`;
+  document.getElementById("level").innerHTML = userStats.level;
+  document.getElementById("rank").innerHTML = userStats.rank;
 
   let user = await fetch("/user");
   user = await user.json();
