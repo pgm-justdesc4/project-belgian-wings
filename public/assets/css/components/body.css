@@ -2,18 +2,18 @@ body {
   max-width: 26.875rem;
   margin: 0 auto;
   background-color: var(--primary-color);
-  
+
   form {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-    
+
     & label {
-        margin-right: auto;
-        color:white;
-        opacity: 1;   
-      }
+      margin-right: auto;
+      color: white;
+      opacity: 1;
+    }
 
     & input {
       justify-content: center;

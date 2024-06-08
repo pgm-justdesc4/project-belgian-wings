@@ -37,12 +37,13 @@ clickableCountriesSeries.useGeodata = true;
 clickableCountriesSeries.include = ["US", "BR", "RU", "IN", "PL"];
 
 // Map country ids to missions
+// Map country ids to missions
 const missions = {
-  US: "Mission 1",
-  BR: "Mission 2",
-  RU: "Mission 3",
-  IN: "Mission 4",
-  PL: "Mission 5",
+  US: { name: "Mission 1", url: "/pilot" },
+  BR: { name: "Mission 2", url: "/technicus" },
+  RU: { name: "Mission 3", url: "/airtrafficcontroller" },
+  IN: { name: "Mission 4", url: "/survivalspecialist" },
+  PL: { name: "Mission 5", url: "/forceprotection" },
 };
 
 // Configure series
@@ -50,7 +51,7 @@ const clickableCountriesTemplate =
   clickableCountriesSeries.mapPolygons.template;
 clickableCountriesTemplate.tooltipText = "{id}";
 clickableCountriesTemplate.adapter.add("tooltipText", function (text, target) {
-  return missions[target.dataItem.dataContext.id]; // Return the mission for the country id
+  return missions[target.dataItem.dataContext.id].name; // Return the mission name for the country id
 });
 clickableCountriesTemplate.fill = am4core.color("#FF9E20"); // Set a different color for clickable countries
 clickableCountriesTemplate.stroke = am4core.color("");
@@ -70,8 +71,8 @@ clickableCountriesTemplate.events.on("hit", function (ev) {
   // Get mission for country
   const mission = missions[countryId];
 
-  // Display mission
-  alert(mission);
+  // Navigate to URL
+  window.location.href = `/minigames${mission.url}`;
 });
 
 const graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
