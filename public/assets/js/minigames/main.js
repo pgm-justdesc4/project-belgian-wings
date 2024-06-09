@@ -3,8 +3,9 @@
  *  GAME WIN
  * =================================================================================================
  */
-function gameWin(gameInterval, score) {
+function gameWin(gameInterval, score, timerInterval = null) {
   if (gameInterval) clearInterval(gameInterval);
+  if (timerInterval) clearInterval(timerInterval);
   fetch("/api/minigameFinished", {
     method: "POST",
     headers: {
@@ -12,7 +13,23 @@ function gameWin(gameInterval, score) {
     },
     body: JSON.stringify({ xp: score }),
   });
-  alert("You win! Your score is: " + score);
+  const gameWinEl = document.createElement("div");
+  gameWinEl.classList.add("game-win");
+  document.body.appendChild(gameWinEl);
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.querySelector(".game-win").appendChild(overlay);
+  const gameWinScreen = document.createElement("div");
+  const restartButton = document.createElement("button");
+  restartButton.innerHTML = "Speel opnieuw";
+  restartButton.addEventListener("click", restartGame);
+  gameWinScreen.classList.add("game-win-screen");
+  gameWinScreen.innerHTML = `<h1>Game finished</h1>
+      <p>+${score} xp</p>
+      <a href="/home">Terug naar home</a>
+    `;
+  gameWinScreen.appendChild(restartButton);
+  document.querySelector(".game-win").appendChild(gameWinScreen);
 }
 
 /**
@@ -20,9 +37,10 @@ function gameWin(gameInterval, score) {
  *  GAME OVER
  * =================================================================================================
  */
-function gameOver(gameInterval) {
+function gameOver(gameInterval, timerInterval = null) {
   document.querySelector("main").display = "none";
   if (gameInterval) clearInterval(gameInterval);
+  if (timerInterval) clearInterval(timerInterval);
   const gameOverEl = document.createElement("div");
   gameOverEl.classList.add("game-over");
   document.body.appendChild(gameOverEl);
@@ -31,11 +49,13 @@ function gameOver(gameInterval) {
   document.querySelector(".game-over").appendChild(overlay);
   const gameOverScreen = document.createElement("div");
   const restartButton = document.createElement("button");
-  restartButton.innerHTML = "Restart";
+  restartButton.innerHTML = "Probeer opnieuw";
   restartButton.addEventListener("click", restartGame);
   gameOverScreen.classList.add("game-over-screen");
-  gameOverScreen.innerHTML =
-    "<h1>Game Over</h1><p>Probeer volgende keer beter</p>";
+  gameOverScreen.innerHTML = `<h1>Game Over</h1>
+      <p>Probeer opnieuw, of ga terug naar home.</p>
+      <a href="/home">Terug naar home</a>
+    `;
   gameOverScreen.appendChild(restartButton);
   document.querySelector(".game-over").appendChild(gameOverScreen);
 }

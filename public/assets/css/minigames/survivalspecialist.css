@@ -5,11 +5,12 @@ STANDARD
 */
 .game-area {
   width: 26.875rem;
-  height: 80vh;
+  height: 100vh;
   position: relative;
   margin: 0 auto;
   border: 1px solid black;
   overflow: hidden;
+  background-color: white;
 }
 
 h2 {
@@ -20,7 +21,7 @@ img {
   width: 2.5rem;
 }
 
-button {
+.start-btn {
   display: none;
 }
 

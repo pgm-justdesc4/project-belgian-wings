@@ -6,7 +6,7 @@ GAME AREA
 
 .game-area {
   width: 26.875rem;
-  height: 86vh;
+  height: 100vh;
   position: relative;
   margin: 0 auto;
   border: 1px solid black;
@@ -50,7 +50,6 @@ AIRPLANES
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -67,6 +66,7 @@ AIRPLANES
 
 .green {
   background-color: green;
+  cursor: pointer;
 }
 
 .red {

@@ -105,7 +105,6 @@ $itemsGrid.addEventListener("click", function (event) {
       if (areAllItemsFilled) {
         score += 450;
         gameWin(null, score);
-        location.reload();
       }
     } else {
       $itemsGrid.appendChild(item);

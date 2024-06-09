@@ -8,6 +8,9 @@
   position: relative;
   height: 100vh;
   height: 100svh;
+  background-color: var(--primary-color);
+  font-family: sans-serif;
+  font-weight: 500;
 
   & .pilot__container {
     background-image: url("/assets/images/minigames/pilot/pilot-bg.jpg");
@@ -58,7 +61,6 @@ STANDARD
   width: 26.875rem;
   height: 86vh;
   position: relative;
-  overflow: hidden;
   margin: 0 auto;
 }
 
@@ -122,6 +124,20 @@ Plane
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.plane::after {
+  content: "Slide hier om te bewegen";
+  text-align: center;
+  width: 12rem;
+  height: 2rem;
+  color: white;
+  background-color: green;
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0.2rem;
 }
 
 .plane img,
