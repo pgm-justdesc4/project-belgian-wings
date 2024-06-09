@@ -1,5 +1,6 @@
 let gameInterval;
 let timerInterval;
+let spawnInterval;
 let score = 0;
 let strikes = 0;
 let enemyMoveSpeed = 75;
@@ -254,7 +255,7 @@ function handleClick(event) {
     ) {
       strikes += 1;
       if (strikes >= 3) {
-        gameOver(gameInterval);
+        gameOver(gameInterval, timerInterval);
       }
     }
   });
@@ -313,7 +314,7 @@ function checkEnemyPositions() {
       enemyRect.top < protectedRect.bottom &&
       enemyRect.bottom > protectedRect.top
     ) {
-      gameOver(gameInterval);
+      gameOver(gameInterval, timerInterval);
     }
   });
 }

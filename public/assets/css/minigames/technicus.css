@@ -12,7 +12,7 @@ STANDARD
   transform: translateX(-50%);
   max-width: 26.875rem;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-image: url("/assets/images/minigames/technicus/212290_CHRISTIAN\ DECLOEDT.jpg");
   background-size: cover;
   background-position: center;

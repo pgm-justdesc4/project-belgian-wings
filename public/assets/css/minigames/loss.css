@@ -10,6 +10,7 @@
     height: 100vh;
     filter: blur(20px);
     z-index: 10;
+    font-family: sans-serif;
   }
 
   & .game-over-screen {
@@ -20,9 +21,38 @@
     z-index: 11;
     background-color: #fff;
     padding: 3rem;
-    background-color: hsla(0, 0%, 100%, 0.7);
+    background-color: var(--primary-color);
+    color: white;
     border-radius: 0.625rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     text-align: center;
+    line-height: 110%;
+
+    & h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 100%;
+    }
+
+    & p {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    & button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: var(--primary-color);
+      border: 0.1rem solid white;
+      color: #fff;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    & a {
+      text-decoration: underline;
+      color: white;
+    }
   }
 }

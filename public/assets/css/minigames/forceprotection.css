@@ -1,11 +1,23 @@
+:root {
+  --primary-color: hsl(216, 87%, 9%);
+  --secondary-color: hsl(34, 91%, 56%);
+  --text-color: white;
+}
+
 /*
 ================================================== 
 STANDARD
 ==================================================
 */
+
+.forceprotection {
+  background-color: var(--primary-color);
+}
+
 .game-area {
-  width: 26.875rem;
-  height: 80vh;
+  max-width: 26.875rem;
+  width: 100%;
+  height: 100vh;
   position: relative;
   margin: 0 auto;
   border: 1px solid black;

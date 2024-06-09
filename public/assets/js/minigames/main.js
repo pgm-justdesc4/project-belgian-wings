@@ -20,9 +20,10 @@ function gameWin(gameInterval, score) {
  *  GAME OVER
  * =================================================================================================
  */
-function gameOver(gameInterval) {
+function gameOver(gameInterval, timerInterval = null) {
   document.querySelector("main").display = "none";
   if (gameInterval) clearInterval(gameInterval);
+  if (timerInterval) clearInterval(timerInterval);
   const gameOverEl = document.createElement("div");
   gameOverEl.classList.add("game-over");
   document.body.appendChild(gameOverEl);
@@ -31,11 +32,13 @@ function gameOver(gameInterval) {
   document.querySelector(".game-over").appendChild(overlay);
   const gameOverScreen = document.createElement("div");
   const restartButton = document.createElement("button");
-  restartButton.innerHTML = "Restart";
+  restartButton.innerHTML = "Probeer opnieuw";
   restartButton.addEventListener("click", restartGame);
   gameOverScreen.classList.add("game-over-screen");
-  gameOverScreen.innerHTML =
-    "<h1>Game Over</h1><p>Probeer volgende keer beter</p>";
+  gameOverScreen.innerHTML = `<h1>Game Over</h1>
+      <p>Probeer opnieuw, of ga terug naar home.</p>
+      <a href="/home">Terug naar home</a>
+    `;
   gameOverScreen.appendChild(restartButton);
   document.querySelector(".game-over").appendChild(gameOverScreen);
 }
