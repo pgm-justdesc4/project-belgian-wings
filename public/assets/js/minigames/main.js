@@ -3,8 +3,9 @@
  *  GAME WIN
  * =================================================================================================
  */
-function gameWin(gameInterval, score) {
+function gameWin(gameInterval, score, timerInterval = null) {
   if (gameInterval) clearInterval(gameInterval);
+  if (timerInterval) clearInterval(timerInterval);
   fetch("/api/minigameFinished", {
     method: "POST",
     headers: {
@@ -12,7 +13,23 @@ function gameWin(gameInterval, score) {
     },
     body: JSON.stringify({ xp: score }),
   });
-  alert("You win! Your score is: " + score);
+  const gameWinEl = document.createElement("div");
+  gameWinEl.classList.add("game-win");
+  document.body.appendChild(gameWinEl);
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.querySelector(".game-win").appendChild(overlay);
+  const gameWinScreen = document.createElement("div");
+  const restartButton = document.createElement("button");
+  restartButton.innerHTML = "Speel opnieuw";
+  restartButton.addEventListener("click", restartGame);
+  gameWinScreen.classList.add("game-win-screen");
+  gameWinScreen.innerHTML = `<h1>Game finished</h1>
+      <p>+${score} xp</p>
+      <a href="/home">Terug naar home</a>
+    `;
+  gameWinScreen.appendChild(restartButton);
+  document.querySelector(".game-win").appendChild(gameWinScreen);
 }
 
 /**

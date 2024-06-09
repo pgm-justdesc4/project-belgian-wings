@@ -166,7 +166,7 @@ function checkCollision() {
       planeRect.top < objectRect.bottom &&
       planeRect.bottom > objectRect.top
     ) {
-      gameWin(gameInterval, score);
+      gameWin(gameInterval, score, timerInterval);
     }
   });
 }
