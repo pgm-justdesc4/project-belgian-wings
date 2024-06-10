@@ -51,7 +51,7 @@ body {
   }
 
   & .user--settings {
-    margin-top: 8rem;
+    margin-top: 2rem;
     flex-direction: column;
     color: white;
     width: 80%;

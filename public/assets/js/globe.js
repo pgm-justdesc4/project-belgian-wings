@@ -39,11 +39,14 @@ clickableCountriesSeries.include = ["US", "BR", "RU", "IN", "PL"];
 // Map country ids to missions
 // Map country ids to missions
 const missions = {
-  US: { name: "Mission 1", url: "/pilot" },
-  BR: { name: "Mission 2", url: "/technicus" },
-  RU: { name: "Mission 3", url: "/airtrafficcontroller" },
-  IN: { name: "Mission 4", url: "/survivalspecialist" },
-  PL: { name: "Mission 5", url: "/forceprotection" },
+  US: { name: "Minigame: Pilot", url: "/pilot" },
+  BR: { name: "Minigame: Technicus", url: "/technicus" },
+  RU: {
+    name: "Minigame: Air Traffic Controller",
+    url: "/airtrafficcontroller",
+  },
+  IN: { name: "Minigame: Survival Specialist", url: "/survivalspecialist" },
+  PL: { name: "Minigame: Force Protection", url: "/forceprotection" },
 };
 
 // Configure series
