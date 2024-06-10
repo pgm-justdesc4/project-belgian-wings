@@ -11,8 +11,6 @@ export function up(knex) {
     table.integer("speedrun").notNullable().defaultTo(0);
     table.integer("wins").notNullable().defaultTo(0);
     table.integer("losses").notNullable().defaultTo(0);
-    table.integer("badges_id").unsigned();
-    table.foreign("badges_id").references("badges.id");
   });
 }
 

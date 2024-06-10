@@ -14,7 +14,6 @@ const seed = async function (knex) {
       speedrun: 50,
       wins: 1,
       losses: 1,
-      badges_id: 1,
     },
     {
       id: 2,
@@ -26,7 +25,6 @@ const seed = async function (knex) {
       speedrun: 7,
       wins: 10,
       losses: 10,
-      badges_id: 2,
     },
   ]);
 };

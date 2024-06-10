@@ -11,5 +11,4 @@ export function up(knex) {
 }
 
 export function down(knex) {
-  return knex.schema.dropTable(tableName);
 }
