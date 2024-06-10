@@ -9,6 +9,11 @@ export async function getUser(req, res) {
   res.send(foundUser);
 }
 
+export async function getAllUsers(req, res) {
+  const allUsers = await user.query();
+  res.send(allUsers);
+}
+
 export async function getUserStats(req, res) {
   const decoded = jwtDecode(req.cookies.token);
   const foundUserStats = await userStats
@@ -17,9 +22,7 @@ export async function getUserStats(req, res) {
   res.send(foundUserStats);
 }
 
-export async function getBadges(req, res) {
-  const decoded = jwtDecode(req.cookies.token);
-  const foundUserStats = await userStats.query().findOne("id", decoded.id);
-  const foundBadges = await foundUserStats.$relatedQuery("badges");
-  res.send(foundBadges);
+export async function getAllUserStats(req, res) {
+  const allUserStats = await userStats.query();
+  res.send(allUserStats);
 }
