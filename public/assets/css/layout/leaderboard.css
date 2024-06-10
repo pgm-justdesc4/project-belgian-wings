@@ -1,0 +1,17 @@
+.leaderboard {
+  color: white;
+  position: relative;
+}
+
+.leaderboard .btn__container {
+  position: absolute;
+  top: 3rem;
+  right: 1.75rem;
+  cursor: pointer;
+}
+
+.leaderboard h1 {
+  text-align: center;
+  padding-top: 7rem;
+  text-transform: uppercase;
+}
