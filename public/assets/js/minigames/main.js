@@ -24,7 +24,7 @@ function gameWin(gameInterval, score, timerInterval = null) {
   restartButton.innerHTML = "Speel opnieuw";
   restartButton.addEventListener("click", restartGame);
   gameWinScreen.classList.add("game-win-screen");
-  gameWinScreen.innerHTML = `<h1>Game finished</h1>
+  gameWinScreen.innerHTML = `<h1>Spel voltooid</h1>
       <p>+${score} xp</p>
       <a href="/home">Terug naar home</a>
     `;

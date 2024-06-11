@@ -68,6 +68,23 @@ CIRCLE
   background-size: cover;
 }
 
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle img {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  transform-origin: top;
+  animation: rotate 10s linear infinite;
+}
+
 /*
 ================================================== 
 AIRPLANES
