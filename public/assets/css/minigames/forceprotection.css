@@ -10,6 +10,10 @@ STANDARD
 ==================================================
 */
 
+body {
+  background-color: var(--primary-color);
+}
+
 .forceprotection::before {
   content: "";
   position: absolute;
@@ -41,7 +45,6 @@ STANDARD
   }
 }
 
-
 .forceprotection::before {
   content: "";
   position: absolute;
@@ -64,7 +67,6 @@ STANDARD
   height: 100vh;
   position: relative;
   margin: 0 auto;
-  border: 1px solid black;
   overflow: hidden;
 }
 
