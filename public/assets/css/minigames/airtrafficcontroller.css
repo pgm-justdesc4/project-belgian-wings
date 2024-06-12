@@ -4,6 +4,21 @@ GAME AREA
 ==================================================
 */
 
+.airtrafficcontroller::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 26.875rem;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/minigames/airtrafficcontroller/radar.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
 .game-area {
   width: 26.875rem;
   height: 100vh;
@@ -54,19 +69,6 @@ CIRCLE
 ==================================================
 */
 
-.circle {
-  position: absolute;
-  width: 120%;
-  height: 90%;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-  background-image: url("/assets/images/minigames/airtrafficcontroller/circle-bg.png");
-  background-position: center;
-  background-size: cover;
-}
 
 @keyframes rotate {
   0% {

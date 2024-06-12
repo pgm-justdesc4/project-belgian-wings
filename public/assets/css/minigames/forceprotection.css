@@ -10,8 +10,37 @@ STANDARD
 ==================================================
 */
 
-.forceprotection {
-  background-color: var(--primary-color);
+.pilot__container--box {
+  margin: 1rem;
+  background-color: rgba(72, 72, 72, 0.5);
+  border: 2px solid white;
+  width: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .pilot__container--timer {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+  }
+}
+
+.forceprotection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 26.875rem;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/minigames/forceprotection/forceprotection.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  z-index: -1;
 }
 
 .game-area {
