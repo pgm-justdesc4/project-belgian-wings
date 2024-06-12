@@ -69,7 +69,6 @@ CIRCLE
 ==================================================
 */
 
-
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -81,8 +80,8 @@ CIRCLE
 
 .circle img {
   position: absolute;
-  top: 45%;
-  left: 40%;
+  top: 46%;
+  left: 37%;
   transform-origin: top;
   animation: rotate 10s linear infinite;
 }
