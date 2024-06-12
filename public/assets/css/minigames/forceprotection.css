@@ -10,6 +10,20 @@ STANDARD
 ==================================================
 */
 
+.forceprotection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/minigames/forceprotection/forceprotection.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  z-index: -1;
+}
+
 .pilot__container--box {
   margin: 1rem;
   background-color: rgba(72, 72, 72, 0.5);
@@ -26,6 +40,7 @@ STANDARD
     color: white;
   }
 }
+
 
 .forceprotection::before {
   content: "";
