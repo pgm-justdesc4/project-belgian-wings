@@ -86,7 +86,6 @@ $itemsGrid.addEventListener("click", function (event) {
 
     // Check if the item is in the requirements of the selected mission
     if (selectedMission.requirements.includes(item.id)) {
-      // If it is, move it to the first empty correct-item and turn the background of the itemChecker green for 3 seconds
       let correctItemsDivs = Array.from(
         document.querySelectorAll(".correct-item")
       );
@@ -106,20 +105,18 @@ $itemsGrid.addEventListener("click", function (event) {
       if (areAllItemsFilled) {
         score += 450;
         gameWin(null, score);
-        location.reload();
       }
     } else {
-      // If it's not, move it back to the grid and turn the background of the itemChecker red for 3 seconds
       $itemsGrid.appendChild(item);
       $itemChecker.style.backgroundColor = "red";
       setTimeout(function () {
         $itemChecker.style.backgroundColor = "";
       }, 3000);
 
-      // Increase the wrong clicks counter and check if it's 3
+      // Game over if the player makes 3 wrong clicks
       wrongClicks++;
       if (wrongClicks === 3) {
-        gameOver(null, restartGame);
+        gameOver(null);
       }
     }
   }

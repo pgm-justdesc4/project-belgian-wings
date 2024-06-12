@@ -1,0 +1,45 @@
+.leaderboard {
+  color: white;
+  position: relative;
+}
+
+.leaderboard .btn__container {
+  position: absolute;
+  top: 3rem;
+  right: 1.75rem;
+  cursor: pointer;
+}
+
+.leaderboard h1 {
+  text-align: center;
+  padding-top: 7rem;
+  text-transform: uppercase;
+}
+
+.leaderboard__table {
+  margin: 3.5rem auto;
+  display: block;
+  max-width: 26.875rem;
+  width: 84%;
+  border-collapse: collapse;
+}
+
+.leaderboard__table .table-top {
+  background-color: rgb(255, 158, 32);
+  color: white;
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.leaderboard__table td {
+  background-color: #7c7c7c;
+  color: #f8f8f8;
+  padding: 1rem;
+  text-align: center;
+}
+
+.leaderboard__table .rank {
+  text-transform: capitalize;
+}

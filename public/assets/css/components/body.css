@@ -1,0 +1,39 @@
+body {
+  max-width: 26.875rem;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+
+    & label {
+      margin-right: auto;
+      color: white;
+      opacity: 1;
+    }
+
+    & input {
+      justify-content: center;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      width: 100%;
+      background-color: rgba(128, 128, 128, 0.7);
+    }
+
+    & .logout {
+      background-color: var(--primary-color);
+      color: white;
+      border: 1px solid white;
+      cursor: pointer;
+      margin-top: 2rem;
+    }
+
+    .logout:hover {
+      background-color: white;
+      color: var(--primary-color);
+    }
+  }
+}

@@ -4,12 +4,15 @@ STANDARD
 ==================================================
 */
 .game-area {
-  width: 26.875rem;
-  height: 80vh;
+  width: 100%;
+  height: 100vh;
   position: relative;
   margin: 0 auto;
-  border: 1px solid black;
   overflow: hidden;
+  background-color: white;
+  padding: 2rem;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 h2 {
@@ -20,8 +23,9 @@ img {
   width: 2.5rem;
 }
 
-button {
+.start-btn {
   display: none;
+  border: none;
 }
 
 /*
@@ -37,16 +41,36 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: var(--primary-color);
+  color: white;
   z-index: 10;
+
+  & h2{
+    padding: 2rem 2rem 0 2rem;
+  }
 }
 
 .mission-list li {
   cursor: pointer;
   list-style: none;
   text-align: center;
-  border: 0.1rem solid black;
   padding: 0.5rem;
+}
+
+#missionList{
+  width: 100%;
+  padding: 2rem;
+
+  & li{
+    margin-bottom: 1rem;
+    background-color: var(--secondary-color);
+    color: white;
+  }
+}
+
+#missionCondition{
+  width: 100%;
+  padding: 2rem;
 }
 
 /* Items grid */
@@ -57,7 +81,7 @@ button {
 }
 
 .items-grid div {
-  border: 0.1rem solid black;
+  border: 0.1rem solid white;
   cursor: pointer;
 }
 
@@ -71,7 +95,7 @@ button {
 .item-checker {
   width: 4.5rem;
   height: 4.5rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid white;
   margin: 0 auto;
   margin-top: 3.5rem;
   rotate: 45deg;
@@ -86,6 +110,6 @@ button {
 .correct-item {
   width: 4.5rem;
   height: 4.5rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid white;
   margin-top: 3rem;
 }

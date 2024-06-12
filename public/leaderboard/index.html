@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/app.css" />
+
+  <!--Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Scorebord</title>
+</head>
+
+<body>
+  <main class="leaderboard">
+    <div onclick="history.back()" class="btn__container">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0.686287" y1="1.8934" x2="6.34314" y2="7.55026" stroke="white"/>
+            <line x1="16.9497" y1="18.1569" x2="22.6066" y2="23.8137" stroke="white"/>
+            <line x1="0.686295" y1="23.8137" x2="6.34315" y2="18.1569" stroke="white"/>
+            <line x1="17.6569" y1="6.84315" x2="23.3137" y2="1.18629" stroke="white"/>
+            <rect x="11.6464" y="18.9481" width="9.1657" height="9.1657" transform="rotate(-135 11.6464 18.9481)" fill="white"/>
+            <rect x="11.6464" y="22.6393" width="14.4309" height="14.4309" transform="rotate(-135 11.6464 22.6393)" stroke="#FF9E20" stroke-width="2"/>
+        </svg>
+    </div>
+    <h1>Scorebord</h1>
+
+    <div id="leaderboard" class="leaderboard__table"></div>
+
+  </main>
+  <script src="/assets/js/leaderboard.js"></script>
+</body>
+
+</html>

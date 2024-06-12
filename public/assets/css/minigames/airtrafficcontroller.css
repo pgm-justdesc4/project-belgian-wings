@@ -1,0 +1,129 @@
+/*
+================================================== 
+GAME AREA
+==================================================
+*/
+
+.airtrafficcontroller::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 26.875rem;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/minigames/airtrafficcontroller/radar.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.game-area {
+  width: 26.875rem;
+  height: 100vh;
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.game-area__container {
+  width: 90%;
+  height: 80%;
+  margin: 5% auto;
+}
+
+.layout-compass {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.layout-compass__compass {
+  width: 5rem;
+}
+
+.atc__container--box {
+  margin: 0.5rem;
+  background-color: rgba(72, 72, 72, 0.5);
+  border: 2px solid white;
+  width: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.atc__container--timer {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+/*
+================================================== 
+CIRCLE
+==================================================
+*/
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle img {
+  position: absolute;
+  top: 45%;
+  left: 40%;
+  transform-origin: top;
+  animation: rotate 10s linear infinite;
+}
+
+/*
+================================================== 
+AIRPLANES
+==================================================
+*/
+
+.airplane {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.airplane::before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background-image: url("/assets/images/minigames/airtrafficcontroller/plane.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.green {
+  border: 0.15rem solid green;
+  cursor: pointer;
+}
+
+.red {
+  border: 0.15rem solid red;
+}
+
+.green,
+.red {
+  padding: 1rem;
+}

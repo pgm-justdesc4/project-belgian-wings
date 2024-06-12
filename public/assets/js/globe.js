@@ -4,6 +4,7 @@ am4core.useTheme(am4themes_animated);
 // Themes end
 const chart = am4core.create("chartdiv", am4maps.MapChart);
 chart.logo.disabled = true;
+chart.maxZoomLevel = 1;
 
 // Set map definition
 chart.geodata = am4geodata_worldLow;
@@ -36,12 +37,16 @@ clickableCountriesSeries.useGeodata = true;
 clickableCountriesSeries.include = ["US", "BR", "RU", "IN", "PL"];
 
 // Map country ids to missions
+// Map country ids to missions
 const missions = {
-  US: "Mission 1",
-  BR: "Mission 2",
-  RU: "Mission 3",
-  IN: "Mission 4",
-  PL: "Mission 5",
+  US: { name: "Minigame: Pilot", url: "/pilot" },
+  BR: { name: "Minigame: Technicus", url: "/technicus" },
+  RU: {
+    name: "Minigame: Air Traffic Controller",
+    url: "/airtrafficcontroller",
+  },
+  IN: { name: "Minigame: Survival Specialist", url: "/survivalspecialist" },
+  PL: { name: "Minigame: Force Protection", url: "/forceprotection" },
 };
 
 // Configure series
@@ -49,10 +54,10 @@ const clickableCountriesTemplate =
   clickableCountriesSeries.mapPolygons.template;
 clickableCountriesTemplate.tooltipText = "{id}";
 clickableCountriesTemplate.adapter.add("tooltipText", function (text, target) {
-  return missions[target.dataItem.dataContext.id]; // Return the mission for the country id
+  return missions[target.dataItem.dataContext.id].name; // Return the mission name for the country id
 });
-clickableCountriesTemplate.fill = am4core.color("#FF6633"); // Set a different color for clickable countries
-clickableCountriesTemplate.stroke = am4core.color("#000033");
+clickableCountriesTemplate.fill = am4core.color("#FF9E20"); // Set a different color for clickable countries
+clickableCountriesTemplate.stroke = am4core.color("");
 clickableCountriesTemplate.strokeWidth = 0.5;
 clickableCountriesTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
 
@@ -69,8 +74,8 @@ clickableCountriesTemplate.events.on("hit", function (ev) {
   // Get mission for country
   const mission = missions[countryId];
 
-  // Display mission
-  alert(mission);
+  // Navigate to URL
+  window.location.href = `/minigames${mission.url}`;
 });
 
 const graticuleSeries = chart.series.push(new am4maps.GraticuleSeries());
@@ -96,3 +101,11 @@ setTimeout(function () {
 chart.seriesContainer.events.on("down", function () {
   animation.stop();
 });
+
+function openOverlay() {
+  document.getElementById("myOverlay").style.width = "100%";
+}
+
+function closeOverlay() {
+  document.getElementById("myOverlay").style.width = "0%";
+}

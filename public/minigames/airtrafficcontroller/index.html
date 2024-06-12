@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="/assets/css/minigames/airtrafficcontroller.css"
+    />
+    <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/loss.css" />
+    <link rel="stylesheet" href="/assets/css/minigames/gamewin.css" />
+
+    <!--Favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">  
+
+    <title>Minigame: Air Traffic Controller</title>
+  </head>
+
+  <body>
+    <main class="airtrafficcontroller">
+      <!-- Game area -->
+      <section class="game-area">
+        <div id="gameArea" class="game-area__container">
+          <!-- Timer -->
+      <div class="atc__container--box">
+        <p class="atc__container--timer"> <span id="timer">0</span></p>
+      </div>
+
+          <!-- Circle -->
+          <div id="circle" class="circle">
+            <figure>
+              <img src="/assets/images/minigames/airtrafficcontroller/circle-line.png" alt="line">
+            </figure>
+          </div>
+          <div class="layout-compass">
+          <figure class="layout-compass__compass">
+            <img src="/assets/images/minigames/airtrafficcontroller/compass-game-ly.png" alt="Compass">
+          </figure>
+          <figure>
+            <img src="/assets/images/minigames/airtrafficcontroller/compass-bar.png" alt="Compass-bar">
+          </figure>
+        </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/assets/js/minigames/main.js"></script>
+    <script src="/assets/js/minigames/airtrafficcontroller.js"></script>
+  </body>
+</html>
