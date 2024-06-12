@@ -6,7 +6,7 @@ Make a team with 4 students and develop an application for the Belgian Air Force
 ## About the Application
 Wings of Belgium is a game designed to give users insight into the different skills required for various air force roles through engaging minigames. Players will navigate a globe with various missions represented by minigames scattered around the map. Each minigame is associated with a specific air force role, providing players with a fun and educational experience.
 
-Players can improve their skills and knowledge by playing these minigames and track their progress through ranks and levels. Additionally, the application features a leaderboard to foster a sense of competition and achievement among players. The application also includes a news tab where users can read articles about the air force.
+Players can improve their skills and knowledge by playing these minigames and track their progress through ranks and levels. Additionally, the application features a leaderboard to foster a sense of competition and achievement among players.
 
 ## Tech Stack
 - HTML
