@@ -5,9 +5,4 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    
-    & .welcome--svg {
-        width: 50%;
-        margin: 4rem auto;
-      }
 }

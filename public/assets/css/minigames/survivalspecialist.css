@@ -90,3 +90,20 @@ img {
   border: 0.1rem solid black;
   margin-top: 3rem;
 }
+
+.survivalspecialist::before {
+  content: "";
+  position: absolute;
+  background-color: red;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 26.875rem;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/minigames/survivalspecialist/sharpknife.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px);
+  z-index: -1;
+}
